@@ -1,0 +1,115 @@
+---
+import NavLink from "./NavLink.astro";
+import NavLinkMobile from "./NavLinkMobile.astro";
+
+const { pathname } = Astro.url;
+
+const normalizeUrl = (url: string) => url.replace(/\/$/, "");
+const isHome = normalizeUrl("/") === normalizeUrl(pathname);
+---
+
+<div class="mx-auto w-full max-w-6xl p-3 md:px-4">
+  <div class="relative flex items-center justify-between">
+    <div class="z-10">
+      <a href="/" class="flex items-center">
+        {
+          isHome ? (
+            <span class="animate-typing self-center overflow-hidden border-r-8 border-r-black pr-2 font-[Courier] text-lg font-extrabold whitespace-nowrap dark:border-r-white">
+              cd ~/home
+            </span>
+          ) : (
+            <span class="self-center text-lg font-extrabold whitespace-nowrap">
+              Xavier Briole
+            </span>
+          )
+        }
+      </a>
+    </div>
+
+    <nav id="navigation" class="absolute right-0 left-0 hidden md:block">
+      <div class="flex items-center justify-between">
+        <ul
+          class="mx-auto flex flex-col items-center justify-center space-y-4 text-2xl font-medium sm:text-sm md:mt-0 md:flex-row md:space-y-0 md:space-x-4 md:p-0 rtl:space-x-reverse"
+        >
+          <NavLink title="Apps" url="/apps" />
+          <NavLink title="Packages" url="/packages" />
+          <NavLink title="Blog" url="/blog" />
+          <NavLink title="About" url="/about" />
+        </ul>
+      </div>
+    </nav>
+
+    <div class="z-10 hidden md:block">
+      <a
+        href="/contact"
+        class="rounded-lg bg-black px-4 py-2 text-2xl font-bold text-white transition-colors duration-300 hover:bg-gray-700 sm:text-sm dark:bg-white dark:text-gray-950 dark:hover:bg-white/90"
+      >
+        Contact
+      </a>
+    </div>
+
+    <button
+      id="toggle-button"
+      class="group text-secondary z-10 inline-flex h-12 w-12 items-center justify-center rounded text-center transition md:hidden"
+      aria-pressed="false"
+      onclick="this.setAttribute('aria-pressed', !(this.getAttribute('aria-pressed') === 'true'))"
+    >
+      <span class="sr-only">Menu</span>
+      <svg
+        class="pointer-events-none h-6 w-6 fill-current"
+        viewBox="0 0 16 16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          class="origin-center translate-x-[7px] -translate-y-[5px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-[[aria-pressed=true]]:translate-x-0 group-[[aria-pressed=true]]:translate-y-0 group-[[aria-pressed=true]]:rotate-[315deg]"
+          y="7"
+          width="9"
+          height="2"
+          rx="1"></rect>
+        <rect
+          class="origin-center transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.8)] group-[[aria-pressed=true]]:rotate-45"
+          y="7"
+          width="16"
+          height="2"
+          rx="1"></rect>
+        <rect
+          class="origin-center translate-y-[5px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-[[aria-pressed=true]]:translate-y-0 group-[[aria-pressed=true]]:rotate-[135deg]"
+          y="7"
+          width="9"
+          height="2"
+          rx="1"></rect>
+      </svg>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden">
+    <nav class="h-screen w-full items-center md:flex md:h-auto md:w-auto">
+      <ul
+        class="collapsed flex w-full flex-col pt-8 text-xl md:w-auto md:flex-row md:self-center md:pt-0 md:text-base"
+      >
+        <NavLinkMobile title="Apps" url="/apps" />
+        <NavLinkMobile title="Packages" url="/packages" />
+        <NavLinkMobile title="Blog" url="/blog" />
+        <NavLinkMobile title="About" url="/about" />
+        <NavLinkMobile title="Contact" url="/contact" />
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleButton = document.getElementById("toggle-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (toggleButton && mobileMenu) {
+      toggleButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        document.body.classList.toggle(
+          "overflow-hidden",
+          !mobileMenu.classList.contains("hidden"),
+        );
+      });
+    }
+  });
+</script>

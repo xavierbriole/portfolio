@@ -1,0 +1,37 @@
+---
+interface Props {
+  title: string;
+  url: string;
+}
+
+const { title, url } = Astro.props;
+const { pathname } = Astro.url;
+
+const normalizeUrl = (url: string) => url.replace(/\/$/, "");
+const normalizedUrl = normalizeUrl(url);
+const normalizedPathname = normalizeUrl(pathname);
+
+const isActive =
+  normalizedPathname === normalizedUrl ||
+  (normalizedUrl !== "/" && normalizedPathname.startsWith(normalizedUrl));
+---
+
+<li>
+  {
+    isActive ? (
+      <a
+        href={url}
+        class="block rounded-full bg-black px-4 py-2 text-white transition-colors duration-300 dark:bg-white dark:text-black"
+      >
+        {title}
+      </a>
+    ) : (
+      <a
+        href={url}
+        class="block rounded-full px-4 py-2 transition-colors duration-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+      >
+        {title}
+      </a>
+    )
+  }
+</li>

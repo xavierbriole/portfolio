@@ -1,0 +1,60 @@
+---
+import { SEO } from "astro-seo";
+import config from "../config";
+
+interface Props {
+  pageTitle: string;
+  isHome?: boolean;
+  postImage?: string;
+  postDescription?: string;
+  appStoreId?: string;
+}
+
+const { pageTitle, isHome, postImage, postDescription, appStoreId } =
+  Astro.props;
+
+const computedTitle = isHome ? config.title : `${pageTitle} | ${config.title}`;
+const isPost = postImage !== undefined && postDescription !== undefined;
+---
+
+<SEO
+  charset="UTF-8"
+  title={computedTitle}
+  description={isPost ? postDescription : config.description}
+  openGraph={{
+    basic: {
+      title: isPost ? pageTitle : computedTitle,
+      type: isPost ? "article" : "website",
+      image: `${config.siteUrl}${isPost ? postImage : config.avatarUrl}`,
+    },
+    optional: {
+      description: isPost ? postDescription : config.description,
+    },
+  }}
+  twitter={{
+    creator: `@${config.creator}`,
+    site: `@${config.creator}`,
+    description: isPost ? postDescription : config.description,
+    image: `${config.siteUrl}${isPost ? postImage : config.avatarUrl}`,
+    card: "summary",
+  }}
+  extend={{
+    link: [
+      {
+        rel: "icon",
+        type: "image/svg+xml",
+        href: "/favicon.svg",
+      },
+    ],
+    meta: [
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "author", content: config.author },
+      { name: "generator", content: Astro.generator },
+    ],
+  }}
+/>
+{
+  appStoreId ? (
+    <meta name="apple-itunes-app" content={`app-id=${appStoreId}`} />
+  ) : null
+}

@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Card from "../components/Card.astro";
+import apps from "../apps";
+---
+
+<BaseLayout title="Apps">
+  <section>
+    <div class="py-24 sm:py-32">
+      <div class="mx-auto max-w-6xl px-6 lg:px-8">
+        <div class="mx-auto lg:mx-0">
+          <h1
+            class="text-5xl font-extrabold tracking-tight text-balance sm:text-7xl"
+          >
+            Apps
+          </h1>
+          <p class="mt-2 text-lg/8">Here are some of the apps I've built.</p>
+        </div>
+        <div
+          class="mt-12 grid grid-cols-1 gap-x-20 gap-y-12 text-center sm:mt-16 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {
+            apps.map(({ params, props }) => (
+              <Card
+                title={props.appName}
+                description={props.description}
+                iconUrl={props.iconUrl}
+                link={`apps/${params.slug}`}
+                platforms={props.platforms}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

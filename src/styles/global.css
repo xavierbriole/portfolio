@@ -1,2 +1,16 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+@theme {
+  --animate-typing: typing 2s steps(20) infinite alternate;
+
+  @keyframes typing {
+    0% {
+      width: 0%;
+      visibility: hidden;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import packages from "../../packages";
+import { Icon } from "astro-icon/components";
+import config from "../../config";
+
+export function getStaticPaths() {
+  return packages;
+}
+
+const { slug } = Astro.params;
+
+interface Props {
+  packageName: string;
+  description: string;
+  iconUrl: string;
+  tags: string[];
+}
+
+const { packageName, description, iconUrl, tags } = Astro.props;
+---
+
+<BaseLayout title={packageName}>
+  <section>
+    <div class="py-24 sm:py-32">
+      <div class="mx-auto max-w-6xl px-6 lg:px-8">
+        <div class="mx-auto lg:mx-0">
+          <img
+            class="m-8 mx-auto rounded-4xl"
+            src={iconUrl}
+            alt={packageName}
+            width={200}
+            height={200}
+          />
+        </div>
+        <div class="text-center">
+          <h1
+            class="text-5xl font-extrabold tracking-tight text-balance sm:text-7xl"
+          >
+            {packageName}
+          </h1>
+          <p
+            class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8"
+          >
+            {description}
+          </p>
+          <div
+            class="mt-10 flex max-w-none flex-col flex-nowrap gap-6 sm:flex-row sm:justify-center"
+          >
+            <div class="flex w-full sm:w-auto">
+              <a
+                href={`https://github.com/${config.creator}/${packageName}`}
+                target="_blank"
+                class="flex w-full items-center justify-center rounded-full bg-black px-8 py-3 text-lg font-medium text-white shadow-xs transition-colors duration-300 hover:bg-gray-700 dark:bg-white dark:text-gray-950 dark:hover:bg-white/90"
+              >
+                <Icon
+                  name="tabler:brand-github-filled"
+                  class="mr-2 -ml-1.5 h-7 w-7"
+                />
+                <span>View on GitHub</span></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

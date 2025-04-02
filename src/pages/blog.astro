@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPost from "../components/BlogPost.astro";
+
+const allPosts = Object.values(
+  import.meta.glob("./blog/*.md", { eager: true }),
+);
+---
+
+<BaseLayout title="Blog">
+  <section>
+    <div class="py-24 sm:py-32">
+      <div class="mx-auto max-w-6xl px-6 lg:px-8">
+        <div class="mx-auto lg:mx-0">
+          <h1
+            class="text-5xl font-extrabold tracking-tight text-balance sm:text-7xl"
+          >
+            Blog
+          </h1>
+          <p class="mt-2 text-lg/8">The latest blog posts.</p>
+        </div>
+        <div class="mx-auto mt-8 flow-root sm:mt-12 lg:mt-16">
+          <div class="-my-4 divide-y divide-gray-950/5 dark:divide-white/10">
+            {
+              allPosts.map((post: any) => (
+                <BlogPost
+                  title={post.frontmatter.title}
+                  url={post.url}
+                  date={post.frontmatter.date}
+                />
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

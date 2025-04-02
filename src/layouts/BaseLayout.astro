@@ -1,0 +1,44 @@
+---
+import Metas from "../components/Metas.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  isHome?: boolean;
+  image?: string;
+  description?: string;
+  appStoreId?: string;
+}
+
+const {
+  title,
+  isHome = false,
+  image = undefined,
+  description = undefined,
+  appStoreId = undefined,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <Metas
+      isHome={isHome}
+      postImage={image}
+      postDescription={description}
+      pageTitle={title}
+      appStoreId={appStoreId}
+    />
+  </head>
+  <body
+    class="bg-gray-50 tracking-tight text-gray-950 dark:bg-black dark:text-white"
+  >
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
