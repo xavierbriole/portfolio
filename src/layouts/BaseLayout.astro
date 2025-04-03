@@ -1,7 +1,9 @@
 ---
 import Metas from "../components/Metas.astro";
+import GoogleAnalytics from "../components/GoogleAnalytics.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import config from "../config.js";
 import "../styles/global.css";
 
 interface Props {
@@ -31,6 +33,7 @@ const {
       pageTitle={title}
       appStoreId={appStoreId}
     />
+    <GoogleAnalytics id={config.googleAnalytics} />
   </head>
   <body
     class="bg-gray-50 tracking-tight text-gray-950 dark:bg-black dark:text-white"
