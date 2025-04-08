@@ -1,0 +1,31 @@
+---
+import SubNavLink from "./SubNavLink.astro";
+
+interface Props {
+  slug: string;
+  appName: string;
+  appIconUrl: string;
+}
+
+const { slug, appName, appIconUrl } = Astro.props;
+---
+
+<div class="mx-auto w-full max-w-6xl p-3 md:px-4">
+  <nav class="border-b border-gray-950/5 p-3 dark:border-white/10">
+    <ul class="flex items-center justify-between">
+      <li>
+        <a
+          href={`/apps/${slug}`}
+          class="flex items-center text-sm font-medium text-gray-500 transition-colors duration-300 hover:text-black dark:text-white dark:hover:text-white"
+        >
+          <img src={appIconUrl} alt={appName} class="mr-2 h-6 w-6 rounded-sm" />
+          {appName}
+        </a>
+      </li>
+      <div class="flex space-x-8">
+        <SubNavLink title="Privacy Policy" url={`/apps/${slug}/privacy`} />
+        <SubNavLink title="FAQ" url={`/apps/${slug}/faq`} />
+      </div>
+    </ul>
+  </nav>
+</div>

@@ -3,7 +3,7 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import partytown from "@astrojs/partytown";
-import config from "./src/config.js";
+import config from "./src/config";
 
 // https://astro.build/config
 export default defineConfig({

@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SubNav from "../../../components/SubNav.astro";
+import { render } from "astro:content";
+import { fetchAppsFAQ } from "../../../fetch-apps";
+
+export async function getStaticPaths() {
+  return fetchAppsFAQ();
+}
+
+const { appFAQ, appStoreId, iconUrl, description } = Astro.props;
+const { data } = appFAQ;
+const { title: appName, slug } = data;
+
+const computedTitle = `${appName} — FAQ`;
+const { Content } = await render(appFAQ);
+---
+
+<BaseLayout
+  title={computedTitle}
+  appStoreId={appStoreId}
+  image={iconUrl}
+  description={description}
+>
+  <section>
+    <div class="py-24 sm:py-32">
+      <SubNav slug={slug} appName={appName} appIconUrl={iconUrl} />
+      <div class="mx-auto max-w-6xl px-6 lg:px-8">
+        <article>
+          <div
+            class="prose prose-code:before:hidden prose-code:after:hidden lg:prose-xl prose-img:rounded-lg prose-a:no-underline prose-a:text-black prose-a:hover:text-gray-500 dark:prose-invert dark:prose-a:text-gray-500 dark:prose-a:hover:text-white prose-a:transition-colors prose-a:duration-300 mx-auto mt-10"
+          >
+            <Content />
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
