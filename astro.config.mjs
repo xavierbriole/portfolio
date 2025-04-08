@@ -9,6 +9,9 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: config.siteUrl,
+  redirects: {
+    "/celebraite/privacy": "/apps/celebraite/privacy",
+  },
   vite: {
     plugins: [tailwindcss()],
   },
