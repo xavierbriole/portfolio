@@ -9,6 +9,7 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: config.siteUrl,
+  trailingSlash: "never",
   redirects: {
     "/celebraite/privacy": "/apps/celebraite/privacy",
   },
