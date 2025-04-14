@@ -14,23 +14,26 @@ Visual Studio is a powerful code editor with a lot of plugins (available [in the
 
 By example, you have something wrong with a plugin, a linter or with the global configuration. If you think the problem does not come from your code, you can try this.
 
-## Remove all settings
-
-```shell
-sudo rm -rf $HOME/Library/Application\ Support/Code
-```
-
-## Remove all extensions
-
-```shell
-sudo rm -rf $HOME/.vscode
-```
-
 ## Remove application
 
-[AppCleaner](https://freemacsoft.net/appcleaner/) is a small application that will remove all files in the system related to the application you want to uninstall.
+Open the Finder and go to the Applications folder. Find Visual Studio Code and move it to the Trash.
 
-Download [AppCleaner](https://freemacsoft.net/appcleaner/) and drop Visual Studio Code in the AppCleaner window to uninstall it.
+## Remove all settings and extensions
+
+```shell
+rm -fr ~/.vscode*
+rm -fr ~/Library/Application\ Support/Code/
+```
+
+## Remove all cache files
+
+```shell
+rm -fr ~/Library/Saved\ Application\ State/com.microsoft.VSCode.savedState/
+rm -fr ~/Library/Preferences/com.microsoft.VSCode.helper.plist
+rm -fr ~/Library/Preferences/com.microsoft.VSCode.plist
+rm -fr ~/Library/Caches/com.microsoft.VSCode
+rm -fr ~/Library/Caches/com.microsoft.VSCode.ShipIt/
+```
 
 ## Install again
 
