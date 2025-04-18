@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Complete Uninstall VS Code on macOS
-description: Learn how to completely uninstall Visual Studio Code on macOS by removing all associated settings, extensions, and files for a clean reinstallation experience.
+description: A step-by-step guide to completely uninstall Visual Studio Code on macOS, removing all settings, extensions, and cache files for a fresh start.
 date: 2020-05-31
 author: Xavier Briole
 image: /assets/posts/complete-uninstall-vscode-macos.jpg

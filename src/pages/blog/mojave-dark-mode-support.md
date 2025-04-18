@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Add macOS Mojave Dark Mode support to your website
-description: Learn how to add macOS Mojave Dark Mode support to your website with simple CSS media queries that respect user system preferences.
+description: Learn to implement macOS Mojave Dark Mode support on your website using CSS media queries, ensuring a seamless experience for all users.
 date: 2019-09-01
 author: Xavier Briole
 image: /assets/posts/mojave-dark-mode-support.jpg
