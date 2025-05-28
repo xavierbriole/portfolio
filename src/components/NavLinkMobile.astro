@@ -19,14 +19,14 @@ const isActive =
 <li>
   {
     isActive ? (
+      <a href={url} class="flex items-center py-3 font-medium">
+        {title}
+      </a>
+    ) : (
       <a
         href={url}
         class="flex items-center py-3 font-medium text-gray-500 dark:text-gray-500"
       >
-        {title}
-      </a>
-    ) : (
-      <a href={url} class="flex items-center py-3 font-medium">
         {title}
       </a>
     )
