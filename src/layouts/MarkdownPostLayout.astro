@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import Prose from "../components/Prose.astro";
 
 interface Props {
   frontmatter: {
@@ -27,7 +28,7 @@ const { title, date, image, description } = frontmatter;
                 {title}
               </h1>
               <p
-                class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8"
+                class="mt-8 mb-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8"
               >
                 <time datetime={date}
                   >{
@@ -41,14 +42,12 @@ const { title, date, image, description } = frontmatter;
               </p>
             </div>
           </header>
-          <div
-            class="prose prose-code:before:hidden prose-code:after:hidden lg:prose-xl prose-img:rounded-lg prose-a:no-underline prose-a:text-black prose-a:hover:text-gray-500 dark:prose-invert dark:prose-a:text-gray-500 dark:prose-a:hover:text-white prose-a:transition-colors prose-a:duration-300 mx-auto mt-10"
-          >
+          <Prose>
             <figure>
               <img src={image} alt={title} />
             </figure>
             <slot />
-          </div>
+          </Prose>
         </article>
       </div>
     </div>

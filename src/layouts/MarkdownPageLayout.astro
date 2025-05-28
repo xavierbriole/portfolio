@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import Prose from "../components/Prose.astro";
 
 interface Props {
   frontmatter: {
@@ -14,11 +15,9 @@ const { frontmatter } = Astro.props;
   <section>
     <div class="py-24 sm:py-32">
       <div class="mx-auto max-w-6xl px-6 lg:px-8">
-        <div
-          class="prose prose-code:before:hidden prose-code:after:hidden lg:prose-xl prose-img:rounded-lg prose-a:no-underline prose-a:text-black prose-a:hover:text-gray-500 dark:prose-invert dark:prose-a:text-gray-500 dark:prose-a:hover:text-white prose-a:transition-colors prose-a:duration-300 mx-auto"
-        >
+        <Prose>
           <slot />
-        </div>
+        </Prose>
       </div>
     </div>
   </section>

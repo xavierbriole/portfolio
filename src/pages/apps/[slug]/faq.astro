@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import SubNav from "../../../components/SubNav.astro";
+import Prose from "../../../components/Prose.astro";
 import { render } from "astro:content";
 import { fetchAppsFAQ } from "../../../fetch-apps";
 
@@ -27,11 +28,18 @@ const { Content } = await render(appFAQ);
       <SubNav slug={slug} appName={appName} appIconUrl={iconUrl} />
       <div class="mx-auto max-w-6xl px-6 lg:px-8">
         <article>
-          <div
-            class="prose prose-code:before:hidden prose-code:after:hidden lg:prose-xl prose-img:rounded-lg prose-a:no-underline prose-a:text-black prose-a:hover:text-gray-500 dark:prose-invert dark:prose-a:text-gray-500 dark:prose-a:hover:text-white prose-a:transition-colors prose-a:duration-300 mx-auto mt-10"
-          >
+          <header>
+            <div class="text-center">
+              <h1
+                class="mt-8 mb-8 text-3xl font-extrabold tracking-tight text-balance sm:text-5xl"
+              >
+                Frequently Asked Questions
+              </h1>
+            </div>
+          </header>
+          <Prose>
             <Content />
-          </div>
+          </Prose>
         </article>
       </div>
     </div>

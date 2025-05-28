@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import SubNav from "../../../components/SubNav.astro";
+import Prose from "../../../components/Prose.astro";
 import { render } from "astro:content";
 import config from "../../../config";
 import { fetchAppsPrivacy } from "../../../fetch-apps";
@@ -28,25 +29,17 @@ const { Content } = await render(appPrivacy);
       <SubNav slug={slug} appName={appName} appIconUrl={iconUrl} />
       <div class="mx-auto max-w-6xl px-6 lg:px-8">
         <article>
-          <div
-            class="prose prose-code:before:hidden prose-code:after:hidden lg:prose-xl prose-img:rounded-lg prose-a:no-underline prose-a:text-black prose-a:hover:text-gray-500 dark:prose-invert dark:prose-a:text-gray-500 dark:prose-a:hover:text-white prose-a:transition-colors prose-a:duration-300 mx-auto mt-10"
-          >
-            <p>
-              {
-                `I, ${config.author}, the developer of ${appName}, am committed to
-              respecting the privacy of users. This privacy policy outlines how
-              I collect, use, share, and protect information within the scope of
-              ${appName}.`
-              }
-            </p>
-            <Content />
-          </div>
-          <footer>
-            <div class="text-right">
-              <p
-                class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8"
+          <header>
+            <div class="text-center">
+              <h1
+                class="mt-8 mb-4 text-3xl font-extrabold tracking-tight text-balance sm:text-5xl"
               >
-                Last updated:
+                Privacy Policy
+              </h1>
+              <p
+                class="mb-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8"
+              >
+                Last updated on
                 <time datetime={new Date(lastUpdatedDate).toISOString()}
                   >{
                     new Date(lastUpdatedDate).toLocaleString("en-us", {
@@ -58,7 +51,18 @@ const { Content } = await render(appPrivacy);
                 >
               </p>
             </div>
-          </footer>
+          </header>
+          <Prose>
+            <p>
+              {
+                `I, ${config.author}, the developer of ${appName}, am committed to
+              respecting the privacy of users. This privacy policy outlines how
+              I collect, use, share, and protect information within the scope of
+              ${appName}.`
+              }
+            </p>
+            <Content />
+          </Prose>
         </article>
       </div>
     </div>
