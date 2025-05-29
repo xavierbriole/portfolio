@@ -98,12 +98,12 @@ const isHome = normalizeUrl("/") === normalizeUrl(pathname);
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", function () {
     const toggleButton = document.getElementById("toggle-button");
     const mobileMenu = document.getElementById("mobile-menu");
 
     if (toggleButton && mobileMenu) {
-      toggleButton.addEventListener("click", () => {
+      toggleButton.addEventListener("click", function () {
         mobileMenu.classList.toggle("hidden");
         document.body.classList.toggle(
           "overflow-hidden",

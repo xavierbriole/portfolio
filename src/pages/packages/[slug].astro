@@ -4,7 +4,7 @@ import packages from "../../packages";
 import { Icon } from "astro-icon/components";
 import config from "../../config";
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
   return packages;
 }
 
@@ -61,6 +61,41 @@ const { packageName, description, iconUrl, tags } = Astro.props;
                   <span>View on GitHub</span></a
                 >
               </div>
+              <div class="flex w-full sm:w-auto">
+                <a
+                  href={`https://github.com/${config.creator}/${packageName}`}
+                  target="_blank"
+                  class="flex w-full items-center justify-center rounded-full border border-gray-200 px-8 py-3 text-lg font-medium shadow-xs transition-colors duration-300 hover:border-gray-300 hover:bg-gray-200 dark:border-gray-800 dark:bg-black dark:text-white dark:hover:border-gray-700 dark:hover:bg-gray-700"
+                >
+                  <span id="star-count">
+                    <svg
+                      id="loading-spinner"
+                      class="h-5 w-5 animate-spin text-gray-500"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        class="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        stroke-width="4"></circle>
+                      <path
+                        class="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                  </span>
+                  <Icon
+                    name="tabler:star-filled"
+                    color="gold"
+                    class="-mr-1.5 ml-2 h-7 w-7"
+                  /></a
+                >
+              </div>
             </div>
           </div>
         </article>
@@ -68,3 +103,28 @@ const { packageName, description, iconUrl, tags } = Astro.props;
     </div>
   </section>
 </BaseLayout>
+<script define:vars={{ packageName }}>
+  async function fetchGitHubStars() {
+    const starsElement = document.getElementById("star-count");
+    const loadingSpinner = document.getElementById("loading-spinner");
+
+    try {
+      const response = await fetch(`/api/github/${packageName}.json`);
+      const data = await response.json();
+
+      if (starsElement && loadingSpinner) {
+        loadingSpinner.style.display = "none";
+        starsElement.textContent = data.stargazers_count.toString();
+      }
+    } catch (e) {
+      console.error("Error fetching GitHub data");
+
+      if (starsElement && loadingSpinner) {
+        loadingSpinner.style.display = "none";
+        starsElement.textContent = "0";
+      }
+    }
+  }
+
+  fetchGitHubStars();
+</script>
