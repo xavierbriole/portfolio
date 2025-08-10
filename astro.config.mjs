@@ -5,6 +5,7 @@ import icon from "astro-icon";
 import partytown from "@astrojs/partytown";
 import config from "./src/config";
 import sitemap from "@astrojs/sitemap";
+import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,4 +26,5 @@ export default defineConfig({
     }),
     sitemap(),
   ],
+  adapter: vercel(),
 });
