@@ -1,12 +1,21 @@
 import type { APIRoute } from "astro";
-import config from "../../../config";
-import packages from "../../../packages";
+import config from "../../config";
 
-export const GET: APIRoute = async ({ params }) => {
-  const { repo } = params;
+export const prerender = false;
+
+export const GET: APIRoute = async ({ url }) => {
+  const repo = url.searchParams.get("repo");
 
   if (!repo) {
-    throw new Error("Repository name is required");
+    return new Response(
+      JSON.stringify({ error: "Repository name is required" }),
+      {
+        status: 400,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
+    );
   }
 
   const response = await fetch(
@@ -46,9 +55,3 @@ export const GET: APIRoute = async ({ params }) => {
     },
   );
 };
-
-export async function getStaticPaths() {
-  return packages.map((pkg) => ({
-    params: { repo: pkg.params.slug },
-  }));
-}

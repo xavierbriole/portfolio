@@ -109,7 +109,9 @@ const { packageName, description, iconUrl, tags } = Astro.props;
     const loadingSpinner = document.getElementById("loading-spinner");
 
     try {
-      const response = await fetch(`/api/github/${packageName}.json`);
+      const response = await fetch(
+        `/api/github-stars.json?repo=${packageName}`,
+      );
       const data = await response.json();
 
       if (starsElement && loadingSpinner) {
