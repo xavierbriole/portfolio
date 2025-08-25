@@ -9,17 +9,17 @@ Celebraite reads your contacts from the local Contacts database on your iPhone. 
 
 ## Does the contact informations are sent to OpenAI when generating the birthday message?
 
-Partially. Celebraite sends a prompt that contains the actual age value but uses a placeholder variable for the first name (e.g., `{FIRST_NAME}`). OpenAI returns a personalized message that preserves the first name placeholder but includes the actual age. Then, the app replaces the first name placeholder locally on your device. The age is computed locally from the birth date and sent to OpenAI for message generation, while the first name is substituted locally after the response is received.
+Partially. Celebraite sends a prompt that contains the actual age value but uses a placeholder for the first name (`FIRST_NAME`). OpenAI returns a message that preserves the first name placeholder. Then, the app replaces the first name placeholder locally on your device. The age is computed locally from the birth date and sent to OpenAI, while the first name is substituted after the response is received.
 
 ### Example
 
-Template sent to OpenAI (with actual age and placeholder first name):
+Template sent to OpenAI (with actual age):
 
 ```text
 Generate a birthday message for {FIRST_NAME}. He or she is 35 years old today.
 ```
 
-OpenAI response (first name placeholder preserved, age included):
+OpenAI response (first name placeholder preserved):
 
 ```text
 Happy birthday, {FIRST_NAME}! Wishing you an amazing 35th year ahead.
@@ -31,10 +31,9 @@ Local replacement in the app (after receiving response):
 Happy birthday, Alex! Wishing you an amazing 35th year ahead.
 ```
 
-What Celebraite handles:
+What Celebraite replaces locally:
 
-- `FIRST_NAME` → replaced locally with the contact's first name (e.g., "Alex") after receiving the response
-- Age → computed locally from the birth date and sent to OpenAI for message generation
+- `FIRST_NAME` → the contact’s first name (e.g., "Alex")
 
 ## Is there an Android version of the app?
 
