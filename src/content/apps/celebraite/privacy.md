@@ -1,12 +1,18 @@
 ---
 title: Celebraite
 slug: celebraite
-lastUpdatedDate: 2024-12-28
+lastUpdatedDate: 2025-08-25
 ---
 
-## No Collection of Personal Data
+## Data Shared with Third Parties
 
-I want to assure you that Celebraite does not collect any personal data from its users. No information such as name, email address, location, or any other personal data is required or stored by Celebraite.
+For birthday message generation, Celebraite shares limited personal information with OpenAI. Specifically, the age computed from contact birth dates is sent to OpenAI's API to generate personalized birthday messages. Contact names are NOT sent to OpenAI; instead, a placeholder is used and the name is replaced locally on your device after the response is received.
+
+The age information is processed by OpenAI according to their privacy policy and terms of service. No other personal contact information (such as names, phone numbers, email addresses, or other contact details) is shared with OpenAI or any other third party.
+
+## Local Data Collection
+
+I want to assure you that Celebraite does not collect or store any personal data from its users locally. No information such as name, email address, location, or any other personal data is required or stored by Celebraite on your device or on any servers I control.
 
 ## Anonymous Data Collected
 
@@ -18,7 +24,7 @@ Celebraite does not use cookies or similar technologies to collect personal info
 
 ## Data Security
 
-I implement appropriate security measures to protect any potential non-personal information collected. However, since I do not collect any personal data, you can rest assured that your sensitive information is secure.
+I implement appropriate security measures to protect any potential non-personal information collected. The age data shared with OpenAI for message generation is transmitted securely over encrypted connections. Since I do not collect or store personal data locally, your sensitive contact information remains secure on your device.
 
 ## Changes to the Privacy Policy
 
