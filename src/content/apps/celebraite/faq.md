@@ -9,7 +9,7 @@ Celebraite reads your contacts from the local Contacts database on your iPhone. 
 
 ## Does the contact informations are sent to OpenAI when generating the birthday message?
 
-No. Celebraite sends a prompt that contains placeholder variables (e.g., `FIRST_NAME`, `AGE`) rather than the actual values. OpenAI returns a non‑personalized message that preserves those placeholders. Then, the app replaces the placeholders locally on your device. Your contact informations are never sent to OpenAI. The age is computed locally from the birth date and substituted after the response is received.
+No. Celebraite sends a prompt that contains placeholder variables (e.g., `{FIRST_NAME}`, `{AGE}`) rather than the actual values. OpenAI returns a non‑personalized message that preserves those placeholders. Then, the app replaces the placeholders locally on your device. Your contact informations are never sent to OpenAI. The age is computed locally from the birth date and substituted after the response is received.
 
 ### Example
 

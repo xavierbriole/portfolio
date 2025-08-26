@@ -1,12 +1,16 @@
 ---
 title: Celebraite
 slug: celebraite
-lastUpdatedDate: 2024-12-28
+lastUpdatedDate: 2025-08-26
 ---
 
 ## No Collection of Personal Data
 
 I want to assure you that Celebraite does not collect any personal data from its users. No information such as name, email address, location, or any other personal data is required or stored by Celebraite.
+
+## OpenAI and Contact Information
+
+Celebraite uses OpenAI to generate birthday messages, but your contact information is never sent to OpenAI. The app sends only templated prompt with placeholder variables (e.g., `{FIRST_NAME}`, `{AGE}`) to OpenAI. OpenAI returns a non-personalized message that preserves those placeholders. Then, the app replaces the placeholders locally on your device with the actual contact information. Your contact details remain private and are processed entirely on your device.
 
 ## Anonymous Data Collected
 
@@ -22,12 +26,4 @@ I implement appropriate security measures to protect any potential non-personal 
 
 ## Changes to the Privacy Policy
 
-I reserve the right to update this privacy policy at any time. All changes will be posted on this page, and the last updated date will also be modified.
-
-## Contact
-
-If you have any questions or concerns regarding my privacy policy, feel free to [contact me](/contact).
-
-By using Celebraite, you consent to this privacy policy.
-
-Thank you for using Celebraite.
+I reserve the right to update this privacy policy at any time. The last updated date is indicated at the top of this page. I encourage you to review this policy periodically to stay informed about how I am protecting your information.
