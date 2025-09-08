@@ -142,9 +142,8 @@ import config from "../config";
           return;
         }
 
-        const errorMessage =
-          error instanceof Error ? error.message : "Unknown error";
-        statusElement.textContent = "Error: " + errorMessage;
+        statusElement.textContent =
+          "An error occurred. Please try again later.";
       }
     }
 

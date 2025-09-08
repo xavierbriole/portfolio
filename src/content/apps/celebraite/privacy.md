@@ -26,4 +26,4 @@ Celebraite implements appropriate security measures to protect any potential non
 
 ## Changes to the Privacy Policy
 
-I reserve the right to update this privacy policy at any time. The last updated date is indicated at the bottom of this page. I encourage you to review this policy periodically to stay informed about how your information is being protected.
+I reserve the right to update this privacy policy at any time. The last updated date is indicated at the end of this policy. I encourage you to review this policy periodically to stay informed about how your information is being protected.
