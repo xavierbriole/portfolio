@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { Icon } from "astro-icon/components";
 import Card from "../components/Card.astro";
+import Button from "../components/Button.astro";
 import config from "../config";
 ---
 
@@ -79,13 +80,13 @@ import config from "../config";
           class="mt-10 flex max-w-none flex-col flex-nowrap gap-6 sm:flex-row sm:justify-center"
         >
           <div class="flex w-full sm:w-auto">
-            <a
-              href="mailto:conservant.94.platres@icloud.com"
-              target="_blank"
-              class="flex w-full items-center justify-center rounded-full bg-black px-8 py-3 text-lg font-medium text-white shadow-xs transition-colors duration-300 hover:bg-gray-700 dark:bg-white dark:text-gray-950 dark:hover:bg-white/90"
-              ><Icon name="tabler:mail-filled" class="mr-2 -ml-1.5 h-7 w-7" />
-              <span>Send me a message</span></a
+            <Button
+              link="mailto:conservant.94.platres@icloud.com"
+              icon="mail-filled"
+              openInNewTab
             >
+              <span>Send me a message</span>
+            </Button>
           </div>
         </div>
 
