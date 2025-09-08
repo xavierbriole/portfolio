@@ -11,6 +11,7 @@ export default {
   creator: "xavierbriole",
   avatarUrl: "/assets/avatar.jpg",
   googleAnalytics: "G-SSXHZE63J1",
+  timezone: "Europe/Paris", // Intl.DateTimeFormat().resolvedOptions().timeZone
   socials: [
     {
       platform: "github",

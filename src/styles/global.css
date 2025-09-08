@@ -14,3 +14,14 @@
     }
   }
 }
+
+/* 
+ * Override prose h1 header
+ * Used in :
+ * - pages/apps/[slug]/faq.astro
+ * - pages/apps/[slug]/privacy.astro
+ */
+.prose header h1.prose-custom-header {
+  @apply mt-8;
+  @apply text-center;
+}

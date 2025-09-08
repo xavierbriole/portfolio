@@ -3,7 +3,6 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import SubNav from "../../../components/SubNav.astro";
 import Prose from "../../../components/Prose.astro";
 import { render } from "astro:content";
-import config from "../../../config";
 import { fetchAppsPrivacy } from "../../../fetch-apps";
 
 export async function getStaticPaths() {
@@ -29,16 +28,22 @@ const { Content } = await render(appPrivacy);
       <SubNav slug={slug} appName={appName} appIconUrl={iconUrl} />
       <div class="mx-auto max-w-6xl px-6 lg:px-8">
         <article>
-          <header>
-            <div class="text-center">
-              <h1
-                class="mt-8 mb-4 text-3xl font-extrabold tracking-tight text-balance sm:text-5xl"
-              >
-                Privacy Policy
-              </h1>
-              <p
-                class="mb-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8"
-              >
+          <Prose>
+            <header>
+              <h1 class="prose-custom-header">Privacy Policy</h1>
+            </header>
+            <Content />
+            <hr />
+            <p>
+              {`By using ${appName}, you consent to this privacy policy.`}
+            </p>
+            <p>
+              {
+                `If you have any questions or concerns about this privacy policy, please `
+              }<a href="/contact">contact me</a>.
+            </p>
+            <footer>
+              <p class="text-right text-sm text-gray-500">
                 Last updated on
                 <time datetime={new Date(lastUpdatedDate).toISOString()}
                   >{
@@ -50,18 +55,7 @@ const { Content } = await render(appPrivacy);
                   }</time
                 >
               </p>
-            </div>
-          </header>
-          <Prose>
-            <p>
-              {
-                `I, ${config.author}, the developer of ${appName}, am committed to
-              respecting the privacy of users. This privacy policy outlines how
-              I collect, use, share, and protect information within the scope of
-              ${appName}.`
-              }
-            </p>
-            <Content />
+            </footer>
           </Prose>
         </article>
       </div>

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import packages from "../../packages";
-import { Icon } from "astro-icon/components";
+import Button from "../../components/Button.astro";
 import config from "../../config";
 
 export async function getStaticPaths() {
@@ -49,28 +49,25 @@ const { packageName, description, iconUrl, tags } = Astro.props;
               class="mt-10 flex max-w-none flex-col flex-nowrap gap-6 sm:flex-row sm:justify-center"
             >
               <div class="flex w-full sm:w-auto">
-                <a
-                  href={`https://github.com/${config.creator}/${packageName}`}
-                  target="_blank"
-                  class="flex w-full items-center justify-center rounded-full bg-black px-8 py-3 text-lg font-medium text-white shadow-xs transition-colors duration-300 hover:bg-gray-700 dark:bg-white dark:text-gray-950 dark:hover:bg-white/90"
+                <Button
+                  link={`https://github.com/${config.creator}/${packageName}`}
+                  icon="brand-github-filled"
+                  openInNewTab
                 >
-                  <Icon
-                    name="tabler:brand-github-filled"
-                    class="mr-2 -ml-1.5 h-7 w-7"
-                  />
-                  <span>View on GitHub</span></a
-                >
+                  <span>View on GitHub</span>
+                </Button>
               </div>
               <div class="flex w-full sm:w-auto">
-                <a
-                  href={`https://github.com/${config.creator}/${packageName}`}
-                  target="_blank"
-                  class="flex w-full items-center justify-center rounded-full border border-gray-200 px-8 py-3 text-lg font-medium shadow-xs transition-colors duration-300 hover:border-gray-300 hover:bg-gray-200 dark:border-gray-800 dark:bg-black dark:text-white dark:hover:border-gray-700 dark:hover:bg-gray-700"
+                <Button
+                  link={`https://github.com/${config.creator}/${packageName}`}
+                  icon="star-filled"
+                  openInNewTab
+                  secondary
                 >
                   <span id="star-count">
                     <svg
                       id="loading-spinner"
-                      class="h-5 w-5 animate-spin text-gray-500"
+                      class="h-5 w-5 animate-spin"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -89,12 +86,7 @@ const { packageName, description, iconUrl, tags } = Astro.props;
                       ></path>
                     </svg>
                   </span>
-                  <Icon
-                    name="tabler:star-filled"
-                    color="gold"
-                    class="-mr-1.5 ml-2 h-7 w-7"
-                  /></a
-                >
+                </Button>
               </div>
             </div>
           </div>
@@ -103,6 +95,7 @@ const { packageName, description, iconUrl, tags } = Astro.props;
     </div>
   </section>
 </BaseLayout>
+
 <script define:vars={{ packageName }}>
   async function fetchGitHubStars() {
     const starsElement = document.getElementById("star-count");

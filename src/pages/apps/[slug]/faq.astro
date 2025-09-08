@@ -28,16 +28,10 @@ const { Content } = await render(appFAQ);
       <SubNav slug={slug} appName={appName} appIconUrl={iconUrl} />
       <div class="mx-auto max-w-6xl px-6 lg:px-8">
         <article>
-          <header>
-            <div class="text-center">
-              <h1
-                class="mt-8 mb-8 text-3xl font-extrabold tracking-tight text-balance sm:text-5xl"
-              >
-                Frequently Asked Questions
-              </h1>
-            </div>
-          </header>
           <Prose>
+            <header>
+              <h1 class="prose-custom-header">Frequently Asked Questions</h1>
+            </header>
             <Content />
           </Prose>
         </article>

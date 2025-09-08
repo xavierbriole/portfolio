@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Card from "../components/Card.astro";
+import Badge from "../components/Badge.astro";
 import apps from "../apps";
 ---
 
@@ -21,13 +22,24 @@ import apps from "../apps";
         >
           {
             apps.map(({ params, props }) => (
-              <Card
-                title={props.appName}
-                description={props.description}
-                iconUrl={props.iconUrl}
-                link={`/apps/${params.slug}`}
-                platforms={props.platforms}
-              />
+              <Card link={`/apps/${params.slug}`}>
+                <div class="space-y-4">
+                  <img
+                    src={props.iconUrl}
+                    alt={props.appName}
+                    class="mx-auto h-16 w-16 rounded-2xl"
+                  />
+                  {props.platforms.map((platform) => (
+                    <Badge>{platform}</Badge>
+                  ))}
+                  <h3 class="text-2xl leading-tight font-bold">
+                    {props.appName}
+                  </h3>
+                  <p class="text-lg font-normal text-gray-500">
+                    {props.description}
+                  </p>
+                </div>
+              </Card>
             ))
           }
         </div>
