@@ -14,13 +14,7 @@ interface Props {
   appStoreId?: string;
 }
 
-const {
-  title,
-  isHome = false,
-  image = undefined,
-  description = undefined,
-  appStoreId = undefined,
-} = Astro.props;
+const { title, isHome, image, description, appStoreId } = Astro.props;
 ---
 
 <!doctype html>
