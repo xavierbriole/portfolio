@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import packages from "../../packages";
 import Button from "../../components/Button.astro";
@@ -26,7 +27,7 @@ const { packageName, description, iconUrl, tags } = Astro.props;
       <div class="mx-auto max-w-6xl px-6 lg:px-8">
         <article>
           <div class="mx-auto lg:mx-0">
-            <img
+            <Image
               class="m-8 mx-auto rounded-4xl"
               src={iconUrl}
               alt={packageName}
