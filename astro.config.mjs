@@ -6,6 +6,7 @@ import partytown from "@astrojs/partytown";
 import config from "./src/config";
 import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
+import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,6 +26,7 @@ export default defineConfig({
       },
     }),
     sitemap(),
+    react(),
   ],
   adapter: vercel(),
 });
