@@ -3,12 +3,13 @@ import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Button from "../components/Button.astro";
 import config from "../config";
+import Title from "@/components/Title";
 ---
 
 <BaseLayout title="Xavier Briole" isHome>
-  <section>
-    <div class="mx-auto flex max-w-6xl px-4 sm:px-6 md:-mt-20 md:h-screen">
-      <div class="m-auto py-12 md:py-20">
+  <section class="flex min-h-screen items-center">
+    <div class="mx-auto flex w-full max-w-7xl px-4 sm:px-6">
+      <div class="mx-auto py-12 md:py-20">
         <div class="sm:mb-8 sm:flex sm:justify-center">
           <Image
             class="m-8 mx-auto rounded-full"
@@ -20,15 +21,20 @@ import config from "../config";
         </div>
         <div class="text-center">
           <h1
-            class="text-5xl font-extrabold tracking-tight text-balance sm:text-7xl"
+            class="text-5xl font-extrabold tracking-tight text-balance text-black sm:text-7xl dark:text-white"
           >
             {config.title}
           </h1>
-          <p
-            class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8"
-          >
-            {config.description}
-          </p>
+          <Title
+            text="I build "
+            words={[
+              "web apps",
+              "mobile apps",
+              "open source packages",
+              "developer tools",
+            ]}
+            client:load
+          />
           <div
             class="mt-10 flex max-w-none flex-col flex-nowrap gap-6 sm:flex-row sm:justify-center"
           >
