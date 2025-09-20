@@ -307,7 +307,7 @@ export const NavbarLogo = ({
   return (
     <a
       href={href || undefined}
-      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black dark:text-white"
+      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal"
     >
       {children}
     </a>
