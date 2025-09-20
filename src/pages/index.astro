@@ -1,16 +1,16 @@
 ---
 import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Title from "../components/Title";
 import Button from "../components/Button.astro";
 import config from "../config";
-import Title from "@/components/Title";
 ---
 
 <BaseLayout title="Xavier Briole" isHome>
-  <section class="flex min-h-screen items-center">
-    <div class="mx-auto flex w-full max-w-7xl px-4 sm:px-6">
-      <div class="mx-auto py-12 md:py-20">
-        <div class="sm:mb-8 sm:flex sm:justify-center">
+  <section class="min-h-screen">
+    <div class="py-32 sm:py-40">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto lg:mx-0">
           <Image
             class="m-8 mx-auto rounded-full"
             src={config.avatarUrl}
@@ -21,7 +21,7 @@ import Title from "@/components/Title";
         </div>
         <div class="text-center">
           <h1
-            class="text-5xl font-extrabold tracking-tight text-balance text-black sm:text-7xl dark:text-white"
+            class="text-5xl font-extrabold tracking-tight text-balance sm:text-7xl"
           >
             {config.title}
           </h1>
