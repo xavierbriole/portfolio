@@ -254,7 +254,7 @@ export const MobileNavToggle = ({
       aria-pressed={isOpen}
       aria-label="Toggle menu"
       onClick={onClick}
-      className="group z-10 inline-flex h-12 w-12 items-center justify-center rounded text-center text-black transition md:hidden dark:text-white"
+      className="group z-10 inline-flex h-12 w-12 items-center justify-center rounded text-center text-black transition lg:hidden dark:text-white"
     >
       <span className="sr-only">Toggle menu</span>
       <svg
