@@ -9,8 +9,6 @@ export async function getStaticPaths() {
   return packages;
 }
 
-const { slug } = Astro.params;
-
 interface Props {
   packageName: string;
   description: string;
@@ -18,7 +16,7 @@ interface Props {
   tags: string[];
 }
 
-const { packageName, description, iconUrl, tags } = Astro.props;
+const { packageName, description, iconUrl } = Astro.props;
 ---
 
 <BaseLayout title={packageName} image={iconUrl} description={description}>
@@ -97,7 +95,7 @@ const { packageName, description, iconUrl, tags } = Astro.props;
   </section>
 </BaseLayout>
 
-<script define:vars={{ packageName }}>
+<script define:vars={{ packageName }} is:inline>
   async function fetchGitHubStars() {
     const starsElement = document.getElementById("star-count");
     const loadingSpinner = document.getElementById("loading-spinner");

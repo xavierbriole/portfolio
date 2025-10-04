@@ -115,7 +115,7 @@ import config from "../config";
   function init(): void {
     const myTimezoneElement = document.getElementById("my-timezone");
 
-    if (!myTimezoneElement) {
+    if (!myTimezoneElement || !myTimezoneElement.textContent) {
       return;
     }
 
