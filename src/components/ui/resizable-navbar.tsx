@@ -220,7 +220,6 @@ export const MobileNavMenu = ({
   children,
   className,
   isOpen,
-  onClose,
 }: MobileNavMenuProps) => {
   return (
     <AnimatePresence>
@@ -317,7 +316,6 @@ export const NavbarLogo = ({
 export const MobileNavItems = ({
   items,
   pathname,
-  className,
   onItemClick,
 }: MobileNavItemsProps) => {
   return items.map((item, idx) => {
