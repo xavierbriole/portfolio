@@ -1,6 +1,11 @@
 ---
 import { Icon } from "astro-icon/components";
-import config from "../config";
+
+interface Props {
+  siteSocials: { platform: string; url: string }[];
+}
+
+const { siteSocials } = Astro.props;
 ---
 
 <footer class="border-t border-gray-950/5 py-8 dark:border-white/10">
@@ -9,7 +14,7 @@ import config from "../config";
   >
     <ul class="flex flex-wrap items-center gap-6 text-sm font-medium">
       {
-        config.socials.map((social) => (
+        siteSocials.map((social) => (
           <li>
             <a
               href={social.url}

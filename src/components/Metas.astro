@@ -1,8 +1,13 @@
 ---
 import { SEO } from "astro-seo";
-import config from "../config";
 
 interface Props {
+  siteUrl: string;
+  siteTitle: string;
+  siteDescription: string;
+  siteAuthorName: string;
+  siteCreatorUsername: string;
+  siteAvatarUrl: string;
   pageTitle: string;
   isHome?: boolean;
   postImage?: string;
@@ -10,32 +15,43 @@ interface Props {
   appStoreId?: string;
 }
 
-const { pageTitle, isHome, postImage, postDescription, appStoreId } =
-  Astro.props;
+const {
+  siteUrl,
+  siteTitle,
+  siteDescription,
+  siteAuthorName,
+  siteCreatorUsername,
+  siteAvatarUrl,
+  pageTitle,
+  isHome,
+  postImage,
+  postDescription,
+  appStoreId,
+} = Astro.props;
 
-const computedTitle = isHome ? config.title : `${pageTitle} | ${config.title}`;
+const computedTitle = isHome ? siteTitle : `${pageTitle} | ${siteTitle}`;
 const isPost = postImage !== undefined && postDescription !== undefined;
 ---
 
 <SEO
   charset="UTF-8"
   title={computedTitle}
-  description={isPost ? postDescription : config.description}
+  description={isPost ? postDescription : siteDescription}
   openGraph={{
     basic: {
       title: isPost ? pageTitle : computedTitle,
       type: isPost ? "article" : "website",
-      image: `${config.siteUrl}${isPost ? postImage : config.avatarUrl}`,
+      image: `${siteUrl}${isPost ? postImage : siteAvatarUrl}`,
     },
     optional: {
-      description: isPost ? postDescription : config.description,
+      description: isPost ? postDescription : siteDescription,
     },
   }}
   twitter={{
-    creator: `@${config.creator}`,
-    site: `@${config.creator}`,
-    description: isPost ? postDescription : config.description,
-    image: `${config.siteUrl}${isPost ? postImage : config.avatarUrl}`,
+    creator: `@${siteCreatorUsername}`,
+    site: `@${siteCreatorUsername}`,
+    description: isPost ? postDescription : siteDescription,
+    image: `${siteUrl}${isPost ? postImage : siteAvatarUrl}`,
     card: "summary",
   }}
   extend={{
@@ -52,7 +68,7 @@ const isPost = postImage !== undefined && postDescription !== undefined;
     ],
     meta: [
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "author", content: config.author },
+      { name: "author", content: siteAuthorName },
       { name: "generator", content: Astro.generator },
     ],
   }}

@@ -10,15 +10,21 @@ import {
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
-import config from "@/config";
 import { useState } from "react";
 
 interface HeaderProps {
+  siteTitle: string;
+  siteNavItems: { name: string; link: string }[];
   isHome?: boolean;
   pathname: string;
 }
 
-export default function Header({ isHome, pathname }: HeaderProps) {
+export default function Header({
+  siteTitle,
+  siteNavItems,
+  isHome,
+  pathname,
+}: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -40,11 +46,11 @@ export default function Header({ isHome, pathname }: HeaderProps) {
               </span>
             ) : (
               <span className="self-center text-lg font-extrabold whitespace-nowrap">
-                {config.title}
+                {siteTitle}
               </span>
             )}
           </NavbarLogo>
-          <NavItems pathname={pathname} items={config.navItems} />
+          <NavItems pathname={pathname} items={siteNavItems} />
           <div className="flex items-center gap-4">
             <NavbarButton href="/contact" variant="primary">
               Contact
@@ -61,7 +67,7 @@ export default function Header({ isHome, pathname }: HeaderProps) {
                 </span>
               ) : (
                 <span className="self-center text-lg font-extrabold whitespace-nowrap">
-                  {config.title}
+                  {siteTitle}
                 </span>
               )}
             </NavbarLogo>
@@ -76,7 +82,7 @@ export default function Header({ isHome, pathname }: HeaderProps) {
             onClose={handleMobileMenuClose}
           >
             <MobileNavItems
-              items={config.navItems}
+              items={siteNavItems}
               pathname={pathname}
               onItemClick={handleMobileMenuClose}
             />

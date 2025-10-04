@@ -22,10 +22,16 @@ const { pathname } = Astro.url;
 <html lang="en">
   <head>
     <Metas
+      siteUrl={import.meta.env.SITE}
+      siteTitle={config.title}
+      siteDescription={config.description}
+      siteAuthorName={config.authorName}
+      siteCreatorUsername={config.creatorUsername}
+      siteAvatarUrl={config.avatarUrl}
+      pageTitle={title}
       isHome={isHome}
       postImage={image}
       postDescription={description}
-      pageTitle={title}
       appStoreId={appStoreId}
     />
     <GoogleAnalytics id={config.googleAnalytics} />
@@ -33,11 +39,17 @@ const { pathname } = Astro.url;
   <body
     class="bg-gray-50 tracking-tight text-gray-950 selection:bg-black selection:text-white dark:bg-black dark:text-white dark:selection:bg-white dark:selection:text-black"
   >
-    <Header pathname={pathname} isHome={isHome} client:load />
+    <Header
+      siteTitle={config.title}
+      siteNavItems={config.navItems}
+      isHome={isHome}
+      pathname={pathname}
+      client:load
+    />
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer siteSocials={config.socials} />
   </body>
 </html>
 

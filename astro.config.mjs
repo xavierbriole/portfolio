@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import partytown from "@astrojs/partytown";
@@ -10,7 +10,7 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  site: config.siteUrl,
+  site: process.env.SITE_URL || "http://localhost:4321",
   trailingSlash: "never",
   redirects: {
     "/celebraite/privacy": "/apps/celebraite/privacy",
@@ -29,4 +29,13 @@ export default defineConfig({
     react(),
   ],
   adapter: vercel(),
+  env: {
+    schema: {
+      GITHUB_TOKEN: envField.string({
+        context: "server",
+        access: "secret",
+        optional: true,
+      }),
+    },
+  },
 });

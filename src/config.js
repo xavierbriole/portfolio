@@ -1,14 +1,8 @@
-const baseUrl =
-  process.env.NODE_ENV === "production"
-    ? "https://xavierbriole.com"
-    : "http://localhost:4321";
-
 export default {
-  siteUrl: baseUrl,
   title: "Xavier Briole",
   description: "I build websites, packages and apps that help people.",
-  author: "Xavier Briole",
-  creator: "xavierbriole",
+  authorName: "Xavier Briole",
+  creatorUsername: "xavierbriole",
   avatarUrl: "/assets/avatar.jpg",
   googleAnalytics: "G-SSXHZE63J1",
   timezone: "Europe/Paris", // Intl.DateTimeFormat().resolvedOptions().timeZone

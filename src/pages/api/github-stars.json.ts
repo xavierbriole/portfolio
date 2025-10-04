@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+import { GITHUB_TOKEN } from "astro:env/server";
 import config from "../../config";
 
 export const prerender = false;
@@ -19,11 +20,11 @@ export const GET: APIRoute = async ({ url }) => {
   }
 
   const response = await fetch(
-    `https://api.github.com/repos/${config.creator}/${repo}`,
+    `https://api.github.com/repos/${config.creatorUsername}/${repo}`,
     {
       headers: {
         Accept: "application/vnd.github+json",
-        Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}`,
+        Authorization: `Bearer ${GITHUB_TOKEN}`,
         "X-GitHub-Api-Version": "2022-11-28",
       },
     },
