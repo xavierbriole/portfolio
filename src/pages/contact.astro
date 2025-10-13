@@ -1,9 +1,13 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Icon } from "astro-icon/components";
-import Card from "../components/Card.astro";
-import Button from "../components/Button.astro";
-import config from "../config";
+import Card from "@/components/Card.astro";
+import Button from "@/components/Button.astro";
+import config from "@/config";
+
+const mailtoUrl = new URL(
+  `mailto:${config.mailto.address}?subject=${encodeURIComponent(config.mailto.subject)}`,
+);
 ---
 
 <BaseLayout title="Contact">
@@ -80,11 +84,7 @@ import config from "../config";
           class="mt-10 flex max-w-none flex-col flex-nowrap gap-6 sm:flex-row sm:justify-center"
         >
           <div class="flex w-full sm:w-auto">
-            <Button
-              link="mailto:conservant.94.platres@icloud.com"
-              icon="mail-filled"
-              openInNewTab
-            >
+            <Button link={mailtoUrl.toString()} icon="mail-filled" openInNewTab>
               <span>Send me a message</span>
             </Button>
           </div>

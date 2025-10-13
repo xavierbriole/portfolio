@@ -1,5 +1,6 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "@/components/Button.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="404">
@@ -21,11 +22,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             class="mt-10 flex max-w-none flex-col flex-nowrap gap-6 sm:flex-row sm:justify-center"
           >
             <div class="flex w-full sm:w-auto">
-              <a
-                href="/"
-                class="w-full rounded-full bg-black px-8 py-3 text-lg font-medium text-white shadow-xs transition-colors duration-300 hover:bg-gray-700 dark:bg-white dark:text-gray-950 dark:hover:bg-white/90"
-                >Home</a
-              >
+              <Button link="/">Home</Button>
             </div>
           </div>
         </div>

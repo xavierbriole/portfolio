@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import { GITHUB_TOKEN } from "astro:env/server";
-import config from "../../config";
+import config from "@/config";
 
 export const prerender = false;
 

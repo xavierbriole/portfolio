@@ -1,9 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import packages from "../../packages";
-import Button from "../../components/Button.astro";
-import config from "../../config";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import packages from "@/packages";
+import Button from "@/components/Button.astro";
+import config from "@/config";
 
 export async function getStaticPaths() {
   return packages;

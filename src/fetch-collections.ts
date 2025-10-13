@@ -1,5 +1,20 @@
 import { getCollection } from "astro:content";
-import apps from "./apps";
+import apps from "@/apps";
+
+export const fetchBlogPosts = async () => {
+  const blogPostsCollection = await getCollection("blogPosts");
+
+  return blogPostsCollection
+    .map((blogPost) => ({
+      params: { slug: blogPost.id },
+      props: { blogPost },
+    }))
+    .sort(
+      (a, b) =>
+        new Date(b.props.blogPost.data.date).getTime() -
+        new Date(a.props.blogPost.data.date).getTime(),
+    );
+};
 
 export const fetchAppsPrivacy = async () => {
   const appsPrivacyCollection = await getCollection("appsPrivacy");

@@ -1,6 +1,18 @@
 import { glob } from "astro/loaders";
 import { z, defineCollection } from "astro:content";
 
+const blogPosts = defineCollection({
+  loader: glob({ pattern: "*.md", base: "./src/content/blog" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.date(),
+    author: z.string(),
+    image: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+  }),
+});
+
 const appsPrivacy = defineCollection({
   loader: glob({ pattern: "**/privacy.md", base: "./src/content/apps" }),
   schema: z.object({
@@ -18,4 +30,4 @@ const appsFAQ = defineCollection({
   }),
 });
 
-export const collections = { appsPrivacy, appsFAQ };
+export const collections = { blogPosts, appsPrivacy, appsFAQ };

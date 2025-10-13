@@ -2,10 +2,10 @@
 import { Image } from "astro:assets";
 import { existsSync } from "fs";
 import { resolve } from "path";
-import BaseLayout from "../../../layouts/BaseLayout.astro";
-import apps from "../../../apps";
-import Button from "../../../components/Button.astro";
-import SubNav from "../../../components/SubNav.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import apps from "@/apps";
+import Button from "@/components/Button.astro";
+import SubNav from "@/components/SubNav.astro";
 
 export async function getStaticPaths() {
   return apps;

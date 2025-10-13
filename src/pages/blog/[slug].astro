@@ -1,19 +1,19 @@
 ---
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
-import BaseLayout from "./BaseLayout.astro";
-import Prose from "../components/Prose.astro";
+import Prose from "@/components/Prose.astro";
+import { render } from "astro:content";
+import { fetchBlogPosts } from "@/fetch-collections";
 
-interface Props {
-  frontmatter: {
-    title: string;
-    date: string;
-    image: string;
-    description: string;
-  };
+export async function getStaticPaths() {
+  return fetchBlogPosts();
 }
 
-const { frontmatter } = Astro.props;
-const { title, date, image, description } = frontmatter;
+const { blogPost } = Astro.props;
+const { data } = blogPost;
+const { title, date, image, description } = data;
+
+const { Content } = await render(blogPost);
 ---
 
 <BaseLayout title={title} image={image} description={description}>
@@ -31,7 +31,7 @@ const { title, date, image, description } = frontmatter;
               <p
                 class="mt-8 mb-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8"
               >
-                <time datetime={date}
+                <time datetime={date.toISOString()}
                   >{
                     new Date(date).toLocaleString("en-us", {
                       year: "numeric",
@@ -44,10 +44,14 @@ const { title, date, image, description } = frontmatter;
             </div>
           </header>
           <Prose>
-            <figure>
-              <Image src={image} alt={title} width={1075} height={716} />
-            </figure>
-            <slot />
+            {
+              image && (
+                <figure>
+                  <Image src={image} alt={title} width={1075} height={716} />
+                </figure>
+              )
+            }
+            <Content />
           </Prose>
         </article>
       </div>
