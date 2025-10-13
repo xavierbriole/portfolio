@@ -17,7 +17,7 @@ const { link, icon, openInNewTab, secondary } = Astro.props;
       href={link}
       target={openInNewTab ? "_blank" : "_self"}
       rel={openInNewTab ? "noopener noreferrer" : undefined}
-      class="flex w-full items-center justify-center rounded-full border border-gray-200 px-8 py-3 text-lg font-medium shadow-xs transition-colors duration-300 hover:border-gray-300 hover:bg-gray-200 dark:border-gray-800 dark:bg-black dark:text-white dark:hover:border-gray-700 dark:hover:bg-gray-700"
+      class="flex w-full items-center justify-center rounded-full border border-gray-200 px-8 py-3 text-lg font-medium transition-colors duration-300 hover:border-gray-300 hover:bg-gray-200 dark:border-gray-800 dark:bg-black dark:text-white dark:hover:border-gray-700 dark:hover:bg-gray-700"
     >
       {icon && <Icon name={`tabler:${icon}`} class="mr-2 -ml-1.5 h-7 w-7" />}
       <slot />
@@ -27,7 +27,7 @@ const { link, icon, openInNewTab, secondary } = Astro.props;
       href={link}
       target={openInNewTab ? "_blank" : "_self"}
       rel={openInNewTab ? "noopener noreferrer" : undefined}
-      class="flex w-full items-center justify-center rounded-full bg-black px-8 py-3 text-lg font-medium text-white shadow-xs transition-colors duration-300 hover:bg-gray-700 dark:bg-white dark:text-gray-950 dark:hover:bg-white/90"
+      class="flex w-full items-center justify-center rounded-full bg-black px-8 py-3 text-lg font-medium text-white transition-colors duration-300 hover:bg-gray-700 dark:bg-white dark:text-gray-950 dark:hover:bg-white/90"
     >
       {icon && <Icon name={`tabler:${icon}`} class="mr-2 -ml-1.5 h-7 w-7" />}
       <slot />

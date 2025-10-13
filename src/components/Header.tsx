@@ -52,9 +52,7 @@ export default function Header({
           </NavbarLogo>
           <NavItems pathname={pathname} items={siteNavItems} />
           <div className="flex items-center gap-4">
-            <NavbarButton href="/contact" variant="primary">
-              Contact
-            </NavbarButton>
+            <NavbarButton href="/contact">Contact</NavbarButton>
           </div>
         </NavBody>
 
@@ -90,7 +88,6 @@ export default function Header({
               <NavbarButton
                 href="/contact"
                 onClick={handleMobileMenuClose}
-                variant="primary"
                 className="w-full"
               >
                 Contact
