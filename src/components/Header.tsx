@@ -57,45 +57,38 @@ export default function Header({
         </NavBody>
 
         <MobileNav>
-          <MobileNavHeader>
-            <NavbarLogo href="/">
-              {isHome ? (
-                <span className="animate-typing self-center overflow-hidden border-r-8 border-r-black pr-2 font-[Courier] text-lg font-extrabold whitespace-nowrap dark:border-r-white">
-                  cd ~/home
-                </span>
-              ) : (
-                <span className="self-center text-lg font-extrabold whitespace-nowrap">
-                  {siteTitle}
-                </span>
-              )}
-            </NavbarLogo>
-            <MobileNavToggle
-              isOpen={isMobileMenuOpen}
-              onClick={toggleMobileMenu}
-            />
-          </MobileNavHeader>
-
-          <MobileNavMenu
-            isOpen={isMobileMenuOpen}
-            onClose={handleMobileMenuClose}
-          >
-            <MobileNavItems
-              items={siteNavItems}
-              pathname={pathname}
-              onItemClick={handleMobileMenuClose}
-            />
-            <div className="flex w-full flex-col gap-4">
-              <NavbarButton
-                href="/contact"
-                onClick={handleMobileMenuClose}
-                className="w-full"
-              >
-                Contact
-              </NavbarButton>
-            </div>
-          </MobileNavMenu>
+          <NavbarLogo href="/">
+            {isHome ? (
+              <span className="animate-typing self-center overflow-hidden border-r-8 border-r-black pr-2 font-[Courier] text-lg font-extrabold whitespace-nowrap dark:border-r-white">
+                cd ~/home
+              </span>
+            ) : (
+              <span className="self-center text-lg font-extrabold whitespace-nowrap">
+                {siteTitle}
+              </span>
+            )}
+          </NavbarLogo>
         </MobileNav>
       </Navbar>
+
+      <div className="fixed right-6 bottom-6 z-[60] lg:hidden">
+        <MobileNavToggle isOpen={isMobileMenuOpen} onClick={toggleMobileMenu} />
+      </div>
+
+      <MobileNavMenu isOpen={isMobileMenuOpen} onClose={handleMobileMenuClose}>
+        <MobileNavItems
+          items={siteNavItems}
+          pathname={pathname}
+          onItemClick={handleMobileMenuClose}
+        />
+        <NavbarButton
+          href="/contact"
+          isMobile={true}
+          onClick={handleMobileMenuClose}
+        >
+          Contact
+        </NavbarButton>
+      </MobileNavMenu>
     </header>
   );
 }

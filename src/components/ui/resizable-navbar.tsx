@@ -112,7 +112,8 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
       }}
       className={cn(
         "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex dark:bg-transparent",
-        visible && "bg-white/80 dark:bg-neutral-950/80",
+        visible &&
+          "border border-white/50 bg-white/2.5 shadow-[inset_0_1px_0px_rgba(255,255,255,0.75),0_0_9px_rgba(0,0,0,0.2),0_3px_8px_rgba(0,0,0,0.15)] backdrop-blur-sm dark:border-white/20 dark:bg-black/2.5 dark:shadow-[inset_0_1px_0px_rgba(255,255,255,0.3),0_0_9px_rgba(0,0,0,0.4),0_3px_8px_rgba(0,0,0,0.3)]",
         className,
       )}
     >
@@ -150,16 +151,15 @@ export const NavItems = ({
             onMouseEnter={() => setHovered(idx)}
             onClick={onItemClick}
             className={cn(
-              "relative px-4 py-2 text-gray-500 dark:text-neutral-300",
-              isActive && "rounded-full bg-gray-100 dark:bg-neutral-800",
+              "relative rounded-full px-4 py-2 text-gray-500 transition-all duration-200 dark:text-neutral-300",
             )}
             key={`link-${idx}`}
             href={item.link}
           >
-            {hovered === idx && (
+            {(hovered === idx || (isActive && hovered === null)) && (
               <motion.div
-                layoutId="hovered"
-                className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
+                layoutId="glass-effect"
+                className="absolute inset-0 h-full w-full rounded-full border border-white/50 bg-white/2.5 shadow-[inset_0_1px_0px_rgba(255,255,255,0.75),0_0_9px_rgba(0,0,0,0.2),0_3px_8px_rgba(0,0,0,0.15)] backdrop-blur-sm dark:border-white/20 dark:bg-black/2.5 dark:shadow-[inset_0_1px_0px_rgba(255,255,255,0.3),0_0_9px_rgba(0,0,0,0.4),0_3px_8px_rgba(0,0,0,0.3)]"
               />
             )}
             <span className="relative z-20">{item.name}</span>
@@ -181,7 +181,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         width: visible ? "90%" : "100%",
         paddingRight: visible ? "12px" : "0px",
         paddingLeft: visible ? "12px" : "0px",
-        borderRadius: visible ? "4px" : "2rem",
+        borderRadius: "9999px",
         y: visible ? 20 : 0,
       }}
       transition={{
@@ -191,7 +191,8 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
       }}
       className={cn(
         "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-2 lg:hidden",
-        visible && "bg-white/80 dark:bg-neutral-950/80",
+        visible &&
+          "border border-white/50 bg-white/2.5 shadow-[inset_0_1px_0px_rgba(255,255,255,0.75),0_0_9px_rgba(0,0,0,0.2),0_3px_8px_rgba(0,0,0,0.15)] backdrop-blur-sm dark:border-white/20 dark:bg-black/2.5 dark:shadow-[inset_0_1px_0px_rgba(255,255,255,0.3),0_0_9px_rgba(0,0,0,0.4),0_3px_8px_rgba(0,0,0,0.3)]",
         className,
       )}
     >
@@ -225,11 +226,11 @@ export const MobileNavMenu = ({
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ opacity: 0, y: "100%" }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: "100%" }}
           className={cn(
-            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-white px-4 py-8 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] dark:bg-neutral-950",
+            "fixed inset-x-0 bottom-0 z-50 flex w-full flex-col items-start justify-start gap-4 border-t border-white/50 bg-white/2.5 px-6 py-8 shadow-[inset_0_1px_0px_rgba(255,255,255,0.75),0_0_9px_rgba(0,0,0,0.2),0_3px_8px_rgba(0,0,0,0.15)] backdrop-blur-sm dark:border-white/20 dark:bg-black/2.5 dark:shadow-[inset_0_1px_0px_rgba(255,255,255,0.3),0_0_9px_rgba(0,0,0,0.4),0_3px_8px_rgba(0,0,0,0.3)]",
             className,
           )}
         >
@@ -253,7 +254,7 @@ export const MobileNavToggle = ({
       aria-pressed={isOpen}
       aria-label="Toggle menu"
       onClick={onClick}
-      className="group z-10 inline-flex h-12 w-12 items-center justify-center rounded text-center text-black transition lg:hidden dark:text-white"
+      className="group z-10 inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/50 bg-white/2.5 shadow-[inset_0_1px_0px_rgba(255,255,255,0.75),0_0_9px_rgba(0,0,0,0.2),0_3px_8px_rgba(0,0,0,0.15)] backdrop-blur-sm transition-all duration-200 lg:hidden dark:border-white/20 dark:bg-black/2.5 dark:shadow-[inset_0_1px_0px_rgba(255,255,255,0.3),0_0_9px_rgba(0,0,0,0.4),0_3px_8px_rgba(0,0,0,0.3)]"
     >
       <span className="sr-only">Toggle menu</span>
       <svg
@@ -331,10 +332,7 @@ export const MobileNavItems = ({
         key={`mobile-link-${idx}`}
         href={item.link}
         onClick={onItemClick}
-        className={cn(
-          "relative text-gray-500",
-          isActive && "text-black dark:text-white",
-        )}
+        className="relative cursor-pointer rounded-full border border-white/50 bg-white/2.5 px-4 py-2 text-sm font-medium text-gray-500 shadow-[inset_0_1px_0px_rgba(255,255,255,0.75),0_0_9px_rgba(0,0,0,0.2),0_3px_8px_rgba(0,0,0,0.15)] backdrop-blur-sm transition-all duration-200 dark:border-white/20 dark:bg-black/2.5 dark:text-neutral-300 dark:shadow-[inset_0_1px_0px_rgba(255,255,255,0.3),0_0_9px_rgba(0,0,0,0.4),0_3px_8px_rgba(0,0,0,0.3)]"
       >
         <span className="block">{item.name}</span>
       </a>
@@ -345,20 +343,23 @@ export const MobileNavItems = ({
 export const NavbarButton = ({
   href,
   as: Tag = "a",
+  isMobile = false,
   children,
   className,
   ...props
 }: {
   href?: string;
   as?: React.ElementType;
+  isMobile?: boolean;
   children: React.ReactNode;
   className?: string;
 } & (
   | React.ComponentPropsWithoutRef<"a">
   | React.ComponentPropsWithoutRef<"button">
 )) => {
-  const styles =
-    "px-4 py-2 rounded-md bg-white text-black hover:bg-gray-200 border border-gray-200 hover:border-gray-300 dark:bg-black dark:text-white dark:hover:bg-gray-700 dark:border-gray-800 dark:hover:border-gray-700 text-sm font-bold relative cursor-pointer transition-colors duration-300 inline-block text-center";
+  const styles = isMobile
+    ? "px-4 py-2 rounded-full border border-white/50 bg-white/2.5 text-gray-500 backdrop-blur-sm shadow-[inset_0_1px_0px_rgba(255,255,255,0.75),0_0_9px_rgba(0,0,0,0.2),0_3px_8px_rgba(0,0,0,0.15)] transition-all duration-200 dark:border-white/20 dark:bg-black/2.5 dark:text-neutral-300 dark:shadow-[inset_0_1px_0px_rgba(255,255,255,0.3),0_0_9px_rgba(0,0,0,0.4),0_3px_8px_rgba(0,0,0,0.3)] text-sm font-medium relative cursor-pointer inline-block text-center"
+    : "px-4 py-2 rounded-md bg-white text-black hover:bg-gray-200 border border-gray-200 hover:border-gray-300 dark:bg-black dark:text-white dark:hover:bg-gray-700 dark:border-gray-800 dark:hover:border-gray-700 text-sm font-bold relative cursor-pointer transition-colors duration-300 inline-block text-center";
 
   return (
     <Tag href={href || undefined} className={cn(styles, className)} {...props}>
