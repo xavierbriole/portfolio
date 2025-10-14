@@ -2,7 +2,6 @@
 import { SEO } from "astro-seo";
 
 interface Props {
-  siteUrl: string;
   siteTitle: string;
   siteDescription: string;
   siteAuthorName: string;
@@ -16,7 +15,6 @@ interface Props {
 }
 
 const {
-  siteUrl,
   siteTitle,
   siteDescription,
   siteAuthorName,
@@ -29,6 +27,7 @@ const {
   appStoreId,
 } = Astro.props;
 
+const siteUrl = import.meta.env.SITE;
 const computedTitle = isHome ? siteTitle : `${pageTitle} | ${siteTitle}`;
 const isPost = postImage !== undefined && postDescription !== undefined;
 ---

@@ -3,6 +3,10 @@ export default {
   description: "I build websites, packages and apps that help people.",
   authorName: "Xavier Briole",
   creatorUsername: "xavierbriole",
+  mailto: {
+    address: "conservant.94.platres@icloud.com",
+    subject: "Hello Xavier 👋",
+  },
   avatarUrl: "/assets/avatar.jpg",
   googleAnalytics: "G-SSXHZE63J1",
   timezone: "Europe/Paris", // Intl.DateTimeFormat().resolvedOptions().timeZone

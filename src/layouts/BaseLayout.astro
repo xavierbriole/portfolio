@@ -1,10 +1,10 @@
 ---
-import Metas from "../components/Metas.astro";
-import GoogleAnalytics from "../components/GoogleAnalytics.astro";
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.astro";
-import config from "../config";
-import "../styles/global.css";
+import Metas from "@/components/Metas.astro";
+import GoogleAnalytics from "@/components/GoogleAnalytics.astro";
+import Header from "@/components/Header.tsx";
+import Footer from "@/components/Footer.astro";
+import config from "@/config";
+import "@/styles/global.css";
 
 interface Props {
   title: string;
@@ -22,7 +22,6 @@ const { pathname } = Astro.url;
 <html lang="en">
   <head>
     <Metas
-      siteUrl={import.meta.env.SITE}
       siteTitle={config.title}
       siteDescription={config.description}
       siteAuthorName={config.authorName}

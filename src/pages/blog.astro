@@ -1,10 +1,9 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import BlogPost from "../components/BlogPost.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BlogPost from "@/components/BlogPost.astro";
+import { fetchBlogPosts } from "@/fetch-collections";
 
-const allPosts = Object.values(
-  import.meta.glob("./blog/*.md", { eager: true }),
-);
+const blogPosts = await fetchBlogPosts();
 ---
 
 <BaseLayout title="Blog">
@@ -22,11 +21,11 @@ const allPosts = Object.values(
         <div class="mx-auto mt-8 flow-root sm:mt-12 lg:mt-16">
           <div class="-my-4 divide-y divide-gray-950/5 dark:divide-white/10">
             {
-              allPosts.map((post: any) => (
+              blogPosts.map(({ params, props }) => (
                 <BlogPost
-                  title={post.frontmatter.title}
-                  url={post.url}
-                  date={post.frontmatter.date}
+                  title={props.blogPost.data.title}
+                  url={`/blog/${params.slug}`}
+                  date={props.blogPost.data.date.toISOString()}
                 />
               ))
             }

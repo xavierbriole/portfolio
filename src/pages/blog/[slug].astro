@@ -1,0 +1,63 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import Prose from "@/components/Prose.astro";
+import { render } from "astro:content";
+import { fetchBlogPosts } from "@/fetch-collections";
+import Sparkles from "@/components/Sparkles";
+
+export async function getStaticPaths() {
+  return fetchBlogPosts();
+}
+
+const { blogPost } = Astro.props;
+const { data } = blogPost;
+const { title, date, image, description } = data;
+
+const { Content } = await render(blogPost);
+---
+
+<BaseLayout title={title} image={image} description={description}>
+  <section>
+    <div class="py-32 sm:py-40">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <article>
+          <header>
+            <div class="text-center">
+              <Sparkles client:load>
+                <h1
+                  class="relative z-10 text-5xl font-extrabold tracking-tight text-balance sm:text-7xl"
+                >
+                  {title}
+                </h1>
+                <p
+                  class="relative z-10 mt-8 mb-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8"
+                >
+                  <time datetime={date.toISOString()}
+                    >{
+                      new Date(date).toLocaleString("en-us", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })
+                    }</time
+                  >
+                </p>
+              </Sparkles>
+            </div>
+          </header>
+          <Prose>
+            {
+              image && (
+                <figure>
+                  <Image src={image} alt={title} width={1075} height={716} />
+                </figure>
+              )
+            }
+            <Content />
+          </Prose>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
