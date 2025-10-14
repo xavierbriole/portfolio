@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import Prose from "@/components/Prose.astro";
 import { render } from "astro:content";
 import { fetchBlogPosts } from "@/fetch-collections";
+import Sparkles from "@/components/Sparkles";
 
 export async function getStaticPaths() {
   return fetchBlogPosts();
@@ -23,24 +24,26 @@ const { Content } = await render(blogPost);
         <article>
           <header>
             <div class="text-center">
-              <h1
-                class="text-5xl font-extrabold tracking-tight text-balance sm:text-7xl"
-              >
-                {title}
-              </h1>
-              <p
-                class="mt-8 mb-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8"
-              >
-                <time datetime={date.toISOString()}
-                  >{
-                    new Date(date).toLocaleString("en-us", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })
-                  }</time
+              <Sparkles client:load>
+                <h1
+                  class="relative z-10 text-5xl font-extrabold tracking-tight text-balance sm:text-7xl"
                 >
-              </p>
+                  {title}
+                </h1>
+                <p
+                  class="relative z-10 mt-8 mb-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8"
+                >
+                  <time datetime={date.toISOString()}
+                    >{
+                      new Date(date).toLocaleString("en-us", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })
+                    }</time
+                  >
+                </p>
+              </Sparkles>
             </div>
           </header>
           <Prose>
