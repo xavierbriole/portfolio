@@ -1,4 +1,18 @@
-export default {
+const config: {
+  title: string;
+  description: string;
+  authorName: string;
+  creatorUsername: string;
+  mailto: {
+    address: string;
+    subject: string;
+  };
+  avatarUrl: string;
+  googleAnalytics: string;
+  timezone: string;
+  navItems: { name: string; link: string }[];
+  socials: { platform: string; url: string }[];
+} = {
   title: "Xavier Briole",
   description: "I build websites, packages and apps that help people.",
   authorName: "Xavier Briole",
@@ -47,3 +61,5 @@ export default {
     },
   ],
 };
+
+export default config;

@@ -6,7 +6,6 @@ import {
   NavbarLogo,
   MobileNavItems,
   NavbarButton,
-  MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";

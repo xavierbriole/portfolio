@@ -45,11 +45,6 @@ interface MobileNavProps {
   visible?: boolean;
 }
 
-interface MobileNavHeaderProps {
-  children: React.ReactNode;
-  className?: string;
-}
-
 interface MobileNavMenuProps {
   children: React.ReactNode;
   className?: string;
@@ -201,22 +196,6 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
   );
 };
 
-export const MobileNavHeader = ({
-  children,
-  className,
-}: MobileNavHeaderProps) => {
-  return (
-    <div
-      className={cn(
-        "flex w-full flex-row items-center justify-between",
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
-};
-
 export const MobileNavMenu = ({
   children,
   className,
@@ -226,11 +205,11 @@ export const MobileNavMenu = ({
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0, y: "100%" }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: "100%" }}
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.8, y: 20 }}
           className={cn(
-            "fixed inset-x-0 bottom-0 z-50 flex w-full flex-col items-start justify-start gap-4 border-t border-white/50 bg-white/2.5 px-6 py-8 shadow-[inset_0_1px_0px_rgba(255,255,255,0.75),0_0_9px_rgba(0,0,0,0.2),0_3px_8px_rgba(0,0,0,0.15)] backdrop-blur-sm dark:border-white/20 dark:bg-black/2.5 dark:shadow-[inset_0_1px_0px_rgba(255,255,255,0.3),0_0_9px_rgba(0,0,0,0.4),0_3px_8px_rgba(0,0,0,0.3)]",
+            "fixed right-6 bottom-20 z-50 flex w-64 flex-col items-start justify-start gap-4 rounded-2xl border border-white/50 bg-white/2.5 px-6 py-6 shadow-[inset_0_1px_0px_rgba(255,255,255,0.75),0_0_9px_rgba(0,0,0,0.2),0_3px_8px_rgba(0,0,0,0.15)] backdrop-blur-sm dark:border-white/20 dark:bg-black/2.5 dark:shadow-[inset_0_1px_0px_rgba(255,255,255,0.3),0_0_9px_rgba(0,0,0,0.4),0_3px_8px_rgba(0,0,0,0.3)]",
             className,
           )}
         >
