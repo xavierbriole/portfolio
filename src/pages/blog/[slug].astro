@@ -23,28 +23,26 @@ const { Content } = await render(blogPost);
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <article>
           <header>
-            <div class="text-center">
-              <Sparkles client:load>
-                <h1
-                  class="relative z-10 text-5xl font-extrabold tracking-tight text-balance sm:text-7xl"
+            <Sparkles client:load>
+              <h1
+                class="relative z-10 text-center text-5xl font-extrabold tracking-tight text-balance sm:text-7xl"
+              >
+                {title}
+              </h1>
+              <p
+                class="relative z-10 mt-8 mb-8 text-center text-lg font-medium text-pretty text-gray-500 sm:text-xl/8"
+              >
+                <time datetime={date.toISOString()}
+                  >{
+                    new Date(date).toLocaleString("en-us", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })
+                  }</time
                 >
-                  {title}
-                </h1>
-                <p
-                  class="relative z-10 mt-8 mb-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8"
-                >
-                  <time datetime={date.toISOString()}
-                    >{
-                      new Date(date).toLocaleString("en-us", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })
-                    }</time
-                  >
-                </p>
-              </Sparkles>
-            </div>
+              </p>
+            </Sparkles>
           </header>
           <Prose>
             {

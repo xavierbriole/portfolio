@@ -1,5 +1,21 @@
-<span
-  class="me-2 inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-900 dark:bg-gray-700 dark:text-gray-300"
->
-  <slot />
-</span>
+---
+interface Props {
+  link?: string;
+}
+
+const { link } = Astro.props;
+---
+
+{
+  link ? (
+    <a href={link} class="inline-block">
+      <span class="inline-flex items-center gap-2 rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-900 dark:bg-gray-700 dark:text-gray-300">
+        <slot />
+      </span>
+    </a>
+  ) : (
+    <span class="inline-flex items-center gap-2 rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-900 dark:bg-gray-700 dark:text-gray-300">
+      <slot />
+    </span>
+  )
+}

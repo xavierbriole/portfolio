@@ -57,37 +57,35 @@ const shouldShowSubNav = hasFaq && hasPrivacy;
               height={200}
             />
           </div>
-          <div class="text-center">
-            <h1
-              class="text-5xl font-extrabold tracking-tight text-balance sm:text-7xl"
-            >
-              {appName}
-            </h1>
-            <p
-              class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8"
-            >
-              {description}
-            </p>
-            <div
-              class="mt-10 flex max-w-none flex-col flex-nowrap gap-6 sm:flex-row sm:justify-center"
-            >
-              <div class="flex w-full sm:w-auto">
-                <Button
-                  link={isBeta
-                    ? testflightUrl
-                    : `https://apps.apple.com/app/id${appStoreId}`}
-                  icon="brand-apple-filled"
-                  openInNewTab
-                >
-                  {
-                    isBeta ? (
-                      <span>Join beta on TestFlight</span>
-                    ) : (
-                      <span>Download on App Store</span>
-                    )
-                  }
-                </Button>
-              </div>
+          <h1
+            class="text-center text-5xl font-extrabold tracking-tight text-balance sm:text-7xl"
+          >
+            {appName}
+          </h1>
+          <p
+            class="mt-8 text-center text-lg font-medium text-pretty text-gray-500 sm:text-xl/8"
+          >
+            {description}
+          </p>
+          <div
+            class="mt-10 flex max-w-none flex-col flex-nowrap gap-6 sm:flex-row sm:justify-center"
+          >
+            <div class="flex w-full sm:w-auto">
+              <Button
+                link={isBeta
+                  ? testflightUrl
+                  : `https://apps.apple.com/app/id${appStoreId}`}
+                icon="brand-apple-filled"
+                openInNewTab
+              >
+                {
+                  isBeta ? (
+                    <span>Join beta on TestFlight</span>
+                  ) : (
+                    <span>Download on App Store</span>
+                  )
+                }
+              </Button>
             </div>
           </div>
         </article>

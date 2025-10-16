@@ -3,13 +3,27 @@ import { Image } from "astro:assets";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Title from "@/components/Title";
 import Button from "@/components/Button.astro";
+import Badge from "@/components/Badge.astro";
 import config from "@/config";
+import { fetchBlogPosts } from "@/fetch-collections";
+
+const blogPosts = await fetchBlogPosts();
 ---
 
 <BaseLayout title="Xavier Briole" isHome>
   <section class="flex min-h-screen items-center justify-center">
     <div class="w-full">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        {
+          blogPosts.length > 0 && (
+            <div class="text-center">
+              <Badge link={`/blog/${blogPosts[0].params.slug}`}>
+                <span class="size-2 shrink-0 rounded-full bg-blue-500" />
+                {`${blogPosts[0].props.blogPost.data.title} →`}
+              </Badge>
+            </div>
+          )
+        }
         <div class="mx-auto lg:mx-0">
           <Image
             class="m-8 mx-auto rounded-full"
@@ -19,35 +33,33 @@ import config from "@/config";
             height={200}
           />
         </div>
-        <div class="text-center">
-          <h1
-            class="text-5xl font-extrabold tracking-tight text-balance sm:text-7xl"
-          >
-            {config.title}
-          </h1>
-          <Title
-            text="I build "
-            words={[
-              "web apps",
-              "mobile apps",
-              "open source packages",
-              "developer tools",
-            ]}
-            client:load
-          />
-          <div
-            class="mt-10 flex max-w-none flex-col flex-nowrap gap-6 sm:flex-row sm:justify-center"
-          >
-            <div class="flex w-full sm:w-auto">
-              <Button link="/apps">
-                <span>Apps</span>
-              </Button>
-            </div>
-            <div class="flex w-full sm:w-auto">
-              <Button link="/packages" secondary>
-                <span>Packages</span>
-              </Button>
-            </div>
+        <h1
+          class="text-center text-5xl font-extrabold tracking-tight text-balance sm:text-7xl"
+        >
+          {config.title}
+        </h1>
+        <Title
+          text="I build "
+          words={[
+            "web apps",
+            "mobile apps",
+            "open source packages",
+            "developer tools",
+          ]}
+          client:load
+        />
+        <div
+          class="mt-10 flex max-w-none flex-col flex-nowrap gap-6 sm:flex-row sm:justify-center"
+        >
+          <div class="flex w-full sm:w-auto">
+            <Button link="/apps">
+              <span>Apps</span>
+            </Button>
+          </div>
+          <div class="flex w-full sm:w-auto">
+            <Button link="/packages" secondary>
+              <span>Packages</span>
+            </Button>
           </div>
         </div>
       </div>
