@@ -45,11 +45,6 @@ interface MobileNavProps {
   visible?: boolean;
 }
 
-interface MobileNavHeaderProps {
-  children: React.ReactNode;
-  className?: string;
-}
-
 interface MobileNavMenuProps {
   children: React.ReactNode;
   className?: string;
@@ -77,7 +72,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
     <motion.div
       ref={ref}
       // IMPORTANT: Change this to class of `fixed` if you want the navbar to be fixed
-      className={cn("fixed inset-x-0 top-10 z-40 w-full", className)}
+      className={cn("fixed inset-x-0 z-40 w-full", className)}
     >
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
@@ -198,22 +193,6 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
     >
       {children}
     </motion.div>
-  );
-};
-
-export const MobileNavHeader = ({
-  children,
-  className,
-}: MobileNavHeaderProps) => {
-  return (
-    <div
-      className={cn(
-        "flex w-full flex-row items-center justify-between",
-        className,
-      )}
-    >
-      {children}
-    </div>
   );
 };
 

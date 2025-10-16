@@ -6,7 +6,6 @@ import {
   NavbarLogo,
   MobileNavItems,
   NavbarButton,
-  MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
@@ -17,6 +16,7 @@ interface HeaderProps {
   siteNavItems: { name: string; link: string }[];
   isHome?: boolean;
   pathname: string;
+  hasBanner: boolean;
 }
 
 export default function Header({
@@ -24,6 +24,7 @@ export default function Header({
   siteNavItems,
   isHome,
   pathname,
+  hasBanner,
 }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -37,7 +38,7 @@ export default function Header({
 
   return (
     <header className="relative w-full">
-      <Navbar>
+      <Navbar className={hasBanner ? "top-20" : "top-10"}>
         <NavBody>
           <NavbarLogo href="/">
             {isHome ? (

@@ -1,6 +1,7 @@
 ---
 import Metas from "@/components/Metas.astro";
 import GoogleAnalytics from "@/components/GoogleAnalytics.astro";
+import Banner from "@/components/Banner.tsx";
 import Header from "@/components/Header.tsx";
 import Footer from "@/components/Footer.astro";
 import config from "@/config";
@@ -38,11 +39,18 @@ const { pathname } = Astro.url;
   <body
     class="bg-gray-50 tracking-tight text-gray-950 selection:bg-black selection:text-white dark:bg-black dark:text-white dark:selection:bg-white dark:selection:text-black"
   >
+    <Banner
+      display={config.banner.display}
+      text={config.banner.text}
+      link={config.banner.link}
+      client:load
+    />
     <Header
       siteTitle={config.title}
       siteNavItems={config.navItems}
       isHome={isHome}
       pathname={pathname}
+      hasBanner={config.banner.display}
       client:load
     />
     <main>
