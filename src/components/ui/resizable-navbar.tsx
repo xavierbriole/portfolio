@@ -144,7 +144,7 @@ export const NavItems = ({
             onMouseEnter={() => setHovered(idx)}
             onClick={onItemClick}
             className={cn(
-              "relative rounded-full px-4 py-2 text-gray-500 transition-all duration-200 dark:text-neutral-300",
+              "relative rounded-full px-4 py-2 text-gray-500 transition-all duration-200 dark:text-neutral-100",
             )}
             key={`link-${idx}`}
             href={item.link}
@@ -206,8 +206,12 @@ export const MobileNavMenu = ({
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
+          style={{
+            boxShadow:
+              "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset",
+          }}
           className={cn(
-            "fixed right-6 bottom-20 z-50 flex w-64 flex-col items-start justify-start gap-4 rounded-2xl border border-white/50 bg-white/2.5 px-6 py-6 shadow-[inset_0_1px_0px_rgba(255,255,255,0.75),0_0_9px_rgba(0,0,0,0.2),0_3px_8px_rgba(0,0,0,0.15)] backdrop-blur-sm dark:border-white/20 dark:bg-black/2.5 dark:shadow-[inset_0_1px_0px_rgba(255,255,255,0.3),0_0_9px_rgba(0,0,0,0.4),0_3px_8px_rgba(0,0,0,0.3)]",
+            "fixed right-6 bottom-20 z-50 flex w-64 flex-col items-start justify-start gap-4 rounded-2xl border border-white/50 bg-black/30 px-6 py-6 backdrop-blur-sm dark:border-white/20 dark:bg-black/30",
             className,
           )}
         >
@@ -231,7 +235,11 @@ export const MobileNavToggle = ({
       aria-pressed={isOpen}
       aria-label="Toggle menu"
       onClick={onClick}
-      className="group z-10 inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/50 bg-white/2.5 shadow-[inset_0_1px_0px_rgba(255,255,255,0.75),0_0_9px_rgba(0,0,0,0.2),0_3px_8px_rgba(0,0,0,0.15)] backdrop-blur-sm transition-all duration-200 lg:hidden dark:border-white/20 dark:bg-black/2.5 dark:shadow-[inset_0_1px_0px_rgba(255,255,255,0.3),0_0_9px_rgba(0,0,0,0.4),0_3px_8px_rgba(0,0,0,0.3)]"
+      style={{
+        boxShadow:
+          "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset",
+      }}
+      className="group z-10 inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/50 bg-white/2.5 backdrop-blur-sm transition-all duration-200 lg:hidden dark:border-white/20 dark:bg-black/2.5"
     >
       <span className="sr-only">Toggle menu</span>
       <svg
@@ -298,7 +306,7 @@ export const MobileNavItems = ({ items, onItemClick }: MobileNavItemsProps) => {
         key={`mobile-link-${idx}`}
         href={item.link}
         onClick={onItemClick}
-        className="relative cursor-pointer rounded-full border border-white/50 bg-white/2.5 px-4 py-2 text-sm font-medium text-gray-500 shadow-[inset_0_1px_0px_rgba(255,255,255,0.75),0_0_9px_rgba(0,0,0,0.2),0_3px_8px_rgba(0,0,0,0.15)] backdrop-blur-sm transition-all duration-200 dark:border-white/20 dark:bg-black/2.5 dark:text-neutral-300 dark:shadow-[inset_0_1px_0px_rgba(255,255,255,0.3),0_0_9px_rgba(0,0,0,0.4),0_3px_8px_rgba(0,0,0,0.3)]"
+        className="relative cursor-pointer px-4 py-2 text-xl font-light text-neutral-100"
       >
         <span className="block">{item.name}</span>
       </a>
@@ -324,7 +332,7 @@ export const NavbarButton = ({
   | React.ComponentPropsWithoutRef<"button">
 )) => {
   const styles = isMobile
-    ? "px-4 py-2 rounded-full border border-white/50 bg-white/2.5 text-gray-500 backdrop-blur-sm shadow-[inset_0_1px_0px_rgba(255,255,255,0.75),0_0_9px_rgba(0,0,0,0.2),0_3px_8px_rgba(0,0,0,0.15)] transition-all duration-200 dark:border-white/20 dark:bg-black/2.5 dark:text-neutral-300 dark:shadow-[inset_0_1px_0px_rgba(255,255,255,0.3),0_0_9px_rgba(0,0,0,0.4),0_3px_8px_rgba(0,0,0,0.3)] text-sm font-medium relative cursor-pointer inline-block text-center"
+    ? "relative cursor-pointer px-4 py-2 text-xl font-light text-neutral-100"
     : "px-4 py-2 rounded-md bg-white text-black hover:bg-gray-200 border border-gray-200 hover:border-gray-300 dark:bg-black dark:text-white dark:hover:bg-gray-700 dark:border-gray-800 dark:hover:border-gray-700 text-sm font-bold relative cursor-pointer transition-colors duration-300 inline-block text-center";
 
   return (
