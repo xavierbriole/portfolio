@@ -55,7 +55,7 @@ export default function Header({
           </div>
         </NavBody>
 
-        <MobileNav>
+        <MobileNav className={isHome ? "hidden" : undefined}>
           <NavbarLogo href="/">
             {isHome ? (
               <span className="animate-typing self-center overflow-hidden border-r-8 border-r-black pr-2 font-[Courier] text-lg font-extrabold whitespace-nowrap dark:border-r-white">
