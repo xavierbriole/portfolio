@@ -13,12 +13,12 @@ const blogPosts = await fetchBlogPosts();
 <BaseLayout title="Xavier Briole" isHome>
   <section class="flex min-h-screen items-center justify-center">
     <div class="w-full">
-      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
         {
           blogPosts.length > 0 && (
-            <div class="text-center">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[200%] text-center">
               <Badge link={`/blog/${blogPosts[0].params.slug}`}>
-                <span class="size-2 shrink-0 rounded-full bg-blue-500" />
+                <span class="mr-1 size-2 shrink-0 rounded-full bg-blue-500" />
                 {`${blogPosts[0].props.blogPost.data.title} →`}
               </Badge>
             </div>
