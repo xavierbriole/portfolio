@@ -29,7 +29,7 @@ const {
 
 const siteUrl = import.meta.env.SITE;
 const computedTitle = isHome ? siteTitle : `${pageTitle} | ${siteTitle}`;
-const isPost = postImage !== undefined && postDescription !== undefined;
+const isPost = postDescription !== undefined;
 ---
 
 <SEO
@@ -40,7 +40,7 @@ const isPost = postImage !== undefined && postDescription !== undefined;
     basic: {
       title: isPost ? pageTitle : computedTitle,
       type: isPost ? "article" : "website",
-      image: `${siteUrl}${isPost ? postImage : siteAvatarUrl}`,
+      image: `${siteUrl}${isPost && postImage ? postImage : siteAvatarUrl}`,
     },
     optional: {
       description: isPost ? postDescription : siteDescription,
@@ -50,7 +50,7 @@ const isPost = postImage !== undefined && postDescription !== undefined;
     creator: `@${siteCreatorUsername}`,
     site: `@${siteCreatorUsername}`,
     description: isPost ? postDescription : siteDescription,
-    image: `${siteUrl}${isPost ? postImage : siteAvatarUrl}`,
+    image: `${siteUrl}${isPost && postImage ? postImage : siteAvatarUrl}`,
     card: "summary",
   }}
   extend={{

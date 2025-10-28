@@ -34,8 +34,6 @@ interface MobileNavItemsProps {
     name: string;
     link: string;
   }[];
-  pathname: string;
-  className?: string;
   onItemClick?: () => void;
 }
 
@@ -293,19 +291,8 @@ export const NavbarLogo = ({
   );
 };
 
-export const MobileNavItems = ({
-  items,
-  pathname,
-  onItemClick,
-}: MobileNavItemsProps) => {
+export const MobileNavItems = ({ items, onItemClick }: MobileNavItemsProps) => {
   return items.map((item, idx) => {
-    const normalizedPathname = normalizeUrl(pathname);
-    const normalizedItemLink = normalizeUrl(item.link);
-    const isActive =
-      normalizedPathname === normalizedItemLink ||
-      (normalizedItemLink !== "/" &&
-        normalizedPathname.startsWith(normalizedItemLink));
-
     return (
       <a
         key={`mobile-link-${idx}`}

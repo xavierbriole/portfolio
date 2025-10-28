@@ -77,7 +77,6 @@ export default function Header({
       <MobileNavMenu isOpen={isMobileMenuOpen} onClose={handleMobileMenuClose}>
         <MobileNavItems
           items={siteNavItems}
-          pathname={pathname}
           onItemClick={handleMobileMenuClose}
         />
         <NavbarButton
