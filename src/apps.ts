@@ -1,4 +1,14 @@
-export default [
+const apps: {
+  params: { slug: string };
+  props: {
+    appName: string;
+    description: string;
+    iconUrl: string;
+    appStoreId?: string;
+    testflightUrl?: string;
+    platforms: string[];
+  };
+}[] = [
   {
     params: { slug: "celebraite" },
     props: {
@@ -11,14 +21,16 @@ export default [
     },
   },
   {
-    params: { slug: "draftmind" },
+    params: { slug: "riftly" },
     props: {
-      appName: "DraftMind",
+      appName: "Riftly",
       description:
-        "Your personal AI coach that help you pick the best champion for League of Legends",
-      iconUrl: "/assets/apps/draftmind.png",
-      testflightUrl: "https://testflight.apple.com/join/pkQqb4Rq",
+        "Follow your favorite teams and leagues from League of Legends with real-time scores, news and stats",
+      iconUrl: "/assets/apps/riftly.png",
+      testflightUrl: "https://testflight.apple.com/join/AM9rQKjY",
       platforms: ["iOS", "iPadOS"],
     },
   },
 ];
+
+export default apps;
