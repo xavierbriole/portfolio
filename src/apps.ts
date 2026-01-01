@@ -27,7 +27,7 @@ const apps: {
       description:
         "Follow your favorite teams and leagues from League of Legends with real-time scores, news and stats",
       iconUrl: "/assets/apps/riftly.png",
-      testflightUrl: "https://testflight.apple.com/join/AM9rQKjY",
+      testflightUrl: "https://testflight.apple.com/join/F1WAmPfH",
       platforms: ["iOS", "iPadOS"],
     },
   },
