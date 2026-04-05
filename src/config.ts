@@ -34,6 +34,10 @@ const config: {
       link: "/packages",
     },
     {
+      name: "Websites",
+      link: "/websites",
+    },
+    {
       name: "Blog",
       link: "/blog",
     },
