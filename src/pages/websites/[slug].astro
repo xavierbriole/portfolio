@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import websites from "@/websites";
+import Button from "@/components/Button.astro";
+
+export async function getStaticPaths() {
+  return websites;
+}
+
+interface Props {
+  websiteName: string;
+  websiteUrl: string;
+  description: string;
+  logoUrl: string;
+  previewImageUrl: string;
+}
+
+const { websiteName, websiteUrl, description, logoUrl, previewImageUrl } =
+  Astro.props;
+---
+
+<BaseLayout title={websiteName} image={logoUrl} description={description}>
+  <section>
+    <div class="py-32 sm:py-40">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <article>
+          <div class="mx-auto lg:mx-0">
+            <Image
+              class="m-8 mx-auto rounded-4xl"
+              src={previewImageUrl}
+              alt={websiteName}
+              width={720}
+              height={720}
+            />
+          </div>
+          <h1
+            class="text-center text-5xl font-extrabold tracking-tight text-balance sm:text-7xl"
+          >
+            {websiteName}
+          </h1>
+          <p
+            class="mt-8 text-center text-lg font-medium text-pretty text-gray-500 sm:text-xl/8"
+          >
+            {description}
+          </p>
+          <div
+            class="mt-10 flex max-w-none flex-col flex-nowrap gap-6 sm:flex-row sm:justify-center"
+          >
+            <div class="flex w-full sm:w-auto">
+              <Button link={websiteUrl} icon="external-link" openInNewTab>
+                <span>Go to website</span>
+              </Button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
