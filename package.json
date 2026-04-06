@@ -8,7 +8,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "astro": "astro",
-    "format": "prettier --check ."
+    "lint": "eslint"
   },
   "dependencies": {
     "@astrojs/partytown": "^2.1.5",
