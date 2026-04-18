@@ -14,7 +14,7 @@ const packages: {
       description:
         "A lightweight & customizable cookie banner for your React App",
       iconUrl: "/assets/packages/react-cookienotice.png",
-      tags: ["react"],
+      tags: ["npm"],
     },
   },
 ];

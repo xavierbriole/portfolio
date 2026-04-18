@@ -28,7 +28,7 @@ const apps: {
         "Follow your favorite teams and leagues from League of Legends with real-time scores, news and stats",
       iconUrl: "/assets/apps/riftly.png",
       appStoreId: "6757268977",
-      platforms: ["iOS", "iPadOS"],
+      platforms: ["iOS", "iPadOS", "Android", "Web"],
     },
   },
 ];
