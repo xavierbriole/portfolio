@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Card from "@/components/Card.astro";
+import Badge from "@/components/Badge.astro";
 import websites from "@/websites";
 ---
 
@@ -31,6 +32,9 @@ import websites from "@/websites";
                     width={256}
                     height={134}
                   />
+                  {props.tags.map((tag) => (
+                    <Badge>{tag}</Badge>
+                  ))}
                   <h3 class="text-2xl leading-tight font-bold">
                     {props.websiteName}
                   </h3>

@@ -6,6 +6,7 @@ const websites: {
     description: string;
     logoUrl: string;
     previewImageUrl: string;
+    tags: string[];
   };
 }[] = [
   {
@@ -17,6 +18,7 @@ const websites: {
         "Upload and share photo collections. Send private links and let people find themselves with facial recognition",
       logoUrl: "/assets/websites/storyfolio/logo.png",
       previewImageUrl: "/assets/websites/storyfolio/preview.png",
+      tags: ["Next.js", "shadcn/ui"],
     },
   },
   {
@@ -28,6 +30,7 @@ const websites: {
         "A family-run vineyard near Aix-en-Provence, producing high-quality wines in AOC Palette estate",
       logoUrl: "/assets/websites/c3s/logo.png",
       previewImageUrl: "/assets/websites/c3s/preview.png",
+      tags: ["WordPress", "Elementor"],
     },
   },
 ];
