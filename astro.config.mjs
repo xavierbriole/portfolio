@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
+import node from "@astrojs/node";
 import react from "@astrojs/react";
 
 // https://astro.build/config
@@ -26,6 +27,9 @@ export default defineConfig({
     sitemap(),
     react(),
   ],
+  adapter: node({
+    mode: "standalone",
+  }),
   env: {
     schema: {
       GITHUB_TOKEN: envField.string({
