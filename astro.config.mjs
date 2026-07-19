@@ -14,6 +14,9 @@ export default defineConfig({
   redirects: {
     "/celebraite/privacy": "/apps/celebraite/privacy",
   },
+  server: {
+    host: "0.0.0.0",
+  },
   vite: {
     plugins: [tailwindcss()],
   },
