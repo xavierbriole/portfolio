@@ -5,17 +5,20 @@ interface Props {
 
 const { id } = Astro.props;
 
-const isDev = import.meta.env.DEV;
+if (import.meta.env.DEV) {
+  return null;
+}
+
 const gtagUrl = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+const scriptContent = `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '${id}');
+`;
 ---
 
-<script type="text/partytown" src={gtagUrl} is:inline></script>
-<script type="text/partytown" define:vars={{ id, isDev }} is:inline>
-  if (isDev) return;
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
-  gtag("config", id);
-</script>
+<>
+  <script src={gtagUrl} async type="text/partytown"></script>
+  <script type="text/partytown" set:html={scriptContent} />
+</>
